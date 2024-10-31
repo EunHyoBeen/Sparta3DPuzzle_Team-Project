@@ -17,10 +17,9 @@ public class DataManager : Singleton<DataManager>
         public string sceneName;
     }
 
-    public void LoadTopScene()
+    public string GetTopSceneName()
     {
-        // 파일 경로 지정
-        string filePath = "./topScene.json";
+        string filePath = "./Assets/Json/topScene.json";
 
         // 파일이 존재하지 않는다면
         if (!File.Exists(filePath))
@@ -31,7 +30,24 @@ public class DataManager : Singleton<DataManager>
         // json파일 읽어서 Scene Load
         string json = File.ReadAllText(filePath);
         TopSceneData data = JsonUtility.FromJson<TopSceneData>(json);
-        SceneManager.LoadScene(data.sceneName);        
+        return data.sceneName;
+    }
+
+    public void LoadTopScene()
+    {
+        // 파일 경로 지정
+        string filePath = "./Assets/Json/topScene.json";
+
+        // 파일이 존재하지 않는다면
+        if (!File.Exists(filePath))
+        {
+            SetTopScene("Stage1");
+        }
+
+        // json파일 읽어서 Scene Load
+        string json = File.ReadAllText(filePath);
+        TopSceneData data = JsonUtility.FromJson<TopSceneData>(json);
+        SceneManager.LoadScene(data.sceneName);
     }
 
     public void SetTopScene(string name)
@@ -39,6 +55,6 @@ public class DataManager : Singleton<DataManager>
         // 매개변수 읽어서 json 작성
         TopSceneData data = new TopSceneData { sceneName = name };
         string json = JsonUtility.ToJson(data);
-        File.WriteAllText("./topScene.json", json);
+        File.WriteAllText("./Assets/Json/topScene.json", json);
     }
 }
