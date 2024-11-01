@@ -18,7 +18,7 @@ public abstract class EndPoint : MonoBehaviour
     // 플레이어와 충돌했을 때 종료 로직을 처리합니다.
     protected void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             HandleLevelComplete();
         }
