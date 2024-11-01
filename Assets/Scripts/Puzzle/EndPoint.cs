@@ -1,5 +1,3 @@
- 
-using System;
 using UnityEngine;
 
 // 종료 지점을 생성하기 위한 추상 클래스
@@ -8,19 +6,19 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public abstract class EndPoint : MonoBehaviour
 {
-    private Collider collider;
+    private BoxCollider boxCollider;
     
     // 기본적으로 Trigger 이벤트로 설정합니다.
     protected void Awake()
     {
-        collider = GetComponent<BoxCollider>();
-        collider.isTrigger = true;
+        boxCollider = GetComponent<BoxCollider>();
+        boxCollider.isTrigger = true;
     }
 
     // 플레이어와 충돌했을 때 종료 로직을 처리합니다.
     protected void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             HandleLevelComplete();
         }
