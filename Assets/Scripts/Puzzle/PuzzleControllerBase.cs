@@ -3,40 +3,55 @@
 public class PuzzleControllerBase : MonoBehaviour
 {
     [Header("PuzzleController Settings")]
-    [SerializeField] private PuzzleType subType;
-    [SerializeField] private PuzzleType pubType;
-    [SerializeField] private bool enableListener = false;
-    [SerializeField] private bool enablePublisher = false;
-    
-    
-    
-    protected virtual void OnEnable()
+    [SerializeField] private PuzzleType[] previousPuzzleTypes;
+    [SerializeField] private PuzzleType currentPuzzleType;
+
+    private void Awake()
     {
-        if(StageEventBus.Instance == null)
-                Debug.LogError("StageEventBus가 존재하지 않습니다.");
-        
-        if (enableListener)
-            StageEventBus.Instance.Subscribe(subType, OnPuzzleClear);
-    }
-    
-    
-    protected virtual void OnDisable()
-    {    
-        if (enableListener)
-            StageEventBus.Instance.UnSubscribe(subType, OnPuzzleClear);
-    }
-    
-    
-    protected virtual void PublishPuzzleClear()
-    {
-        if (enablePublisher)
+        if (StageEventBus.Instance == null)
         {
-            StageEventBus.Instance.Publish(pubType);
+            Debug.LogError("StageEventBus가 존재하지 않습니다.");
         }
     }
-    
-    protected virtual void OnPuzzleClear()
+
+    protected virtual void OnEnable()
     {
-        
+        SubscribeToPreviousPuzzles();
+    }
+
+    protected virtual void OnDisable()
+    {
+        UnsubscribeFromPreviousPuzzles();
+    }
+
+    protected virtual void PublishPuzzleClear()
+    {
+        StageEventBus.Instance?.Publish(currentPuzzleType);
+    }
+
+    protected virtual void ActivatePuzzle()
+    {
+        UnsubscribeFromPreviousPuzzles();
+    }
+
+    
+    private void SubscribeToPreviousPuzzles()
+    {
+        if (previousPuzzleTypes.Length == 0) return;
+
+        foreach (var puzzleType in previousPuzzleTypes)
+        {
+            StageEventBus.Instance.Subscribe(puzzleType, ActivatePuzzle);
+        }
+    }
+
+    private void UnsubscribeFromPreviousPuzzles()
+    {
+        if (previousPuzzleTypes.Length == 0) return;
+
+        foreach (var puzzleType in previousPuzzleTypes)
+        {
+            StageEventBus.Instance.UnSubscribe(puzzleType, ActivatePuzzle);
+        }
     }
 }

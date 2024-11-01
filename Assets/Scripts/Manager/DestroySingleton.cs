@@ -10,10 +10,10 @@ public class DestroySingleton<T> : MonoBehaviour where T : MonoBehaviour
         {
             if (_instance == null)
             {
-                // ÇöÀç ¾À¿¡¼­ ÀÎ½ºÅÏ½º¸¦ Ã£À½
+                // í˜„ì¬ ì”¬ì—ì„œ ì¸ìŠ¤í„´ìŠ¤ë¥¼ ì°¾ìŒ
                 _instance = FindObjectOfType<T>();
 
-                // ÀÎ½ºÅÏ½º°¡ ¾ø´Ù¸é »õ·Î¿î GameObject¸¦ »ı¼ºÇØ ÀÎ½ºÅÏ½º¸¦ Ãß°¡
+                // ì¸ìŠ¤í„´ìŠ¤ê°€ ì—†ë‹¤ë©´ ìƒˆë¡œìš´ GameObjectë¥¼ ìƒì„±í•´ ì¸ìŠ¤í„´ìŠ¤ë¥¼ ì¶”ê°€
                 if (_instance == null)
                 {
                     GameObject singletonObject = new GameObject(typeof(T).Name);
@@ -24,10 +24,10 @@ public class DestroySingleton<T> : MonoBehaviour where T : MonoBehaviour
         }
     }
 
-    // ÀÚ½Ä Å¬·¡½º¿¡¼­ Awake ¸Ş¼­µå¸¦ ¿À¹ö¶óÀÌµåÇÒ °æ¿ì, base.Awake()¸¦ È£ÃâÇÏµµ·Ï ¾È³»
+    // ìì‹ í´ë˜ìŠ¤ì—ì„œ Awake ë©”ì„œë“œë¥¼ ì˜¤ë²„ë¼ì´ë“œí•  ê²½ìš°, base.Awake()ë¥¼ í˜¸ì¶œí•˜ë„ë¡ ì•ˆë‚´
     protected virtual void Awake()
     {
-        // ÀÌ¹Ì ÀÎ½ºÅÏ½º°¡ Á¸ÀçÇÏ¸é Áßº¹ »ı¼º ¹æÁö
+        // ì´ë¯¸ ì¸ìŠ¤í„´ìŠ¤ê°€ ì¡´ì¬í•˜ë©´ ì¤‘ë³µ ìƒì„± ë°©ì§€
         if (_instance == null)
         {
             _instance = this as T;
