@@ -6,11 +6,9 @@ public class MapGenerator : MonoBehaviour
 {
     //TODO 맵이름 설정 할 수 있게
     [ContextMenu("맵 생성기")]
-    public void Generate()
+    public void Generate(string name)
     {
-        string name = "MapData_jjy";
-        List<MapElement> loadedMapData = MapDataManager.Instance.LoadMapData(name);
-
+         List<MapElement> loadedMapData = MapDataManager.Instance.LoadMapData(name);
         foreach (var element in loadedMapData)
         {
             GameObject prefab = Resources.Load<GameObject>($"Map/{element.name}");
