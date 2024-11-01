@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 6a8639ef949004c5ea689b7f0e2c065c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a8639ef949004c5ea689b7f0e2c065c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6a8639ef949004c5ea689b7f0e2c065c, type: 3}
       propertyPath: m_Name
-      value: Spikes
+      value: Spikes_
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6a8639ef949004c5ea689b7f0e2c065c, type: 3}
       propertyPath: m_TagString
@@ -113,3 +113,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a3c24f1a3d544a08abe13dd587f7179, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 2
+  damageRate: 1

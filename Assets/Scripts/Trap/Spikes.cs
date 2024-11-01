@@ -8,7 +8,7 @@ public class Spikes : MonoBehaviour
 	public float damageRate; //데미지를 얼마나 자주 줄지
 
 	//객체 저장
-	//List<> things = new List<>();
+	List<IDamaglbe> things = new List<IDamaglbe>();
 
 	void Start()
 	{
@@ -16,24 +16,24 @@ public class Spikes : MonoBehaviour
 	}
 	void DealDamage()//데미지 주는함수
 	{
-		//for(int i = 0; i < things.const; i++)
+		for (int i = 0; i < things.Count; i++)
 		{
 			//데미지값
-			//things[i]. (damage);
+			things[i].TakePhysicalDamage(damage);
 		}
 	}
 	void OnTriggerEnter(Collider other)
 	{
-		//if(other.TryGetComponent(out /*인터페이스*/ damagabe))
+		if (other.TryGetComponent(out IDamaglbe damagable))
 		{
-			//things.Add(damagabe);
+			things.Add(damagable);
 		}
 	}
 	void OnTriggerExit(Collider other)
 	{
-		//if(other.TryGetComponent(out /**/ damagabe))
+		if (other.TryGetComponent(out IDamaglbe damagable))
 		{
-			//this.Remove(damagabe);
+			things.Remove(damagable);
 		}
 	}
 }
