@@ -12,14 +12,13 @@ public class SceneTransitionPoint : EndPoint
         
         if (nextSceneIndex >= SceneManager.sceneCountInBuildSettings)
         {
-           // Debug.LogError("다음 씬이 존재하는지 확인 해주십시오.");
-            nextSceneIndex = SceneManager.GetActiveScene().buildIndex;  
+           Debug.LogError("다음 씬이 존재하는지 확인 해주십시오.");
+           nextSceneIndex = SceneManager.GetActiveScene().buildIndex;  
         }
     }
 
     protected override void HandleLevelComplete()
     {
         Debug.Log("클리어");
-       // SceneManager.LoadScene(nextSceneIndex);
     }
 }
