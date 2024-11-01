@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 4376818255668077070}
   - component: {fileID: 3293094348955450700}
   - component: {fileID: 3571488546101852102}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: floor_dirt_large
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -402,7 +402,7 @@ GameObject:
   - component: {fileID: 4310147765796947518}
   - component: {fileID: 8128689928574248336}
   - component: {fileID: 2295848348534389915}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: floor_dirt_large (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -923,7 +923,7 @@ GameObject:
   - component: {fileID: 4220918613985781209}
   - component: {fileID: 2427548874121952546}
   - component: {fileID: 8898078216400743013}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: floor_dirt_large (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1006,7 +1006,7 @@ GameObject:
   - component: {fileID: 2886700836400550065}
   - component: {fileID: 7463599531048630624}
   - component: {fileID: 2148041336771855591}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: floor_dirt_large (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1278,7 +1278,7 @@ GameObject:
   - component: {fileID: 4918558709072113168}
   - component: {fileID: 4271401824982722923}
   - component: {fileID: 7116811212434606449}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: floor_dirt_large (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1468,7 +1468,7 @@ GameObject:
   - component: {fileID: 5850001073525706788}
   - component: {fileID: 8760338199717344768}
   - component: {fileID: 66836075211040071}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2104,7 +2104,7 @@ GameObject:
   - component: {fileID: 4816827392286105340}
   - component: {fileID: 2433954777418873798}
   - component: {fileID: 8593189607163700737}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: floor_dirt_large (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2354,7 +2354,7 @@ GameObject:
   - component: {fileID: 75556770855141609}
   - component: {fileID: 403213850287576064}
   - component: {fileID: 2915329314151300223}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: floor_dirt_large
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2625,7 +2625,7 @@ GameObject:
   - component: {fileID: 5559600813245496386}
   - component: {fileID: 6973030568228113339}
   - component: {fileID: 1954924897108409500}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: floor_dirt_large (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2828,7 +2828,7 @@ GameObject:
   - component: {fileID: 5181061860452820482}
   - component: {fileID: 8469301511203986659}
   - component: {fileID: 6290386149345734978}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: floor_dirt_large (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3195,7 +3195,7 @@ GameObject:
   - component: {fileID: 7023419805040889454}
   - component: {fileID: 599735773535661742}
   - component: {fileID: 932228464459565972}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3506,7 +3506,7 @@ GameObject:
   - component: {fileID: 4381296019603955769}
   - component: {fileID: 7113993236840140084}
   - component: {fileID: 2239758932104053074}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: floor_dirt_large (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3589,7 +3589,7 @@ GameObject:
   - component: {fileID: 7593318535426909574}
   - component: {fileID: 8206658483288463199}
   - component: {fileID: 523420021484594247}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: floor_dirt_large (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4413,7 +4413,7 @@ GameObject:
   - component: {fileID: 3535785064180846143}
   - component: {fileID: 7327557439476199064}
   - component: {fileID: 4007097383217308012}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: floor_dirt_large (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4579,7 +4579,7 @@ GameObject:
   - component: {fileID: 7556948705412673846}
   - component: {fileID: 8343984197860025066}
   - component: {fileID: 8738956267396447667}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: floor_dirt_large (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4662,7 +4662,7 @@ GameObject:
   - component: {fileID: 76352574650041577}
   - component: {fileID: 4786302646117651253}
   - component: {fileID: 3043463609669616421}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: floor_dirt_large (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4851,7 +4851,7 @@ GameObject:
   - component: {fileID: 4802316445057959838}
   - component: {fileID: 530295680125772692}
   - component: {fileID: 8040400411634895176}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: floor_dirt_large (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5973,7 +5973,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5310513822052553361}
-  - {fileID: 1666016393760779995}
+  - {fileID: 9165773959316046246}
   - {fileID: 2852330122041536933}
   - {fileID: 676514145087992748}
   - {fileID: 1117923233042698407}
@@ -6080,7 +6080,7 @@ GameObject:
   - component: {fileID: 610871533185121401}
   - component: {fileID: 5419770770170575766}
   - component: {fileID: 4227963999440194435}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: floor_dirt_large (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6269,7 +6269,7 @@ GameObject:
   - component: {fileID: 1761668147545952693}
   - component: {fileID: 3993654029032911590}
   - component: {fileID: 1239033914816761901}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: floor_dirt_large (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6776,7 +6776,7 @@ GameObject:
   - component: {fileID: 1010817996796477499}
   - component: {fileID: 1101861025150534410}
   - component: {fileID: 355497592534258195}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: floor_dirt_large (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6942,7 +6942,7 @@ GameObject:
   - component: {fileID: 2011761992925004195}
   - component: {fileID: 2190578002918820704}
   - component: {fileID: 2764459108066654680}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: floor_dirt_large (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7297,7 +7297,7 @@ GameObject:
   - component: {fileID: 438983892209232607}
   - component: {fileID: 5851539421193333054}
   - component: {fileID: 8605656167950457744}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: floor_dirt_large (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7569,7 +7569,7 @@ GameObject:
   - component: {fileID: 8000958711623553166}
   - component: {fileID: 6412882123612778956}
   - component: {fileID: 2532968729213495977}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: floor_dirt_large (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7650,7 +7650,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5714350721489834714}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: TransitionPointFloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7790,7 +7790,7 @@ GameObject:
   - component: {fileID: 6943059738997635339}
   - component: {fileID: 591194702146585606}
   - component: {fileID: 3694449439450380338}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: floor_dirt_large (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7873,7 +7873,7 @@ GameObject:
   - component: {fileID: 3717721891329433474}
   - component: {fileID: 8641151510806556428}
   - component: {fileID: 6349249529437735424}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: floor_dirt_large (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8145,7 +8145,7 @@ GameObject:
   - component: {fileID: 3959217353650395210}
   - component: {fileID: 110312605505316826}
   - component: {fileID: 5230199335589101893}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: floor_dirt_large (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8228,7 +8228,7 @@ GameObject:
   - component: {fileID: 8374856134719348159}
   - component: {fileID: 304827326836057053}
   - component: {fileID: 781797979463416479}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: floor_dirt_large (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8689,7 +8689,7 @@ GameObject:
   - component: {fileID: 460501094847585197}
   - component: {fileID: 6801279157458213111}
   - component: {fileID: 4641149754417977935}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: floor_dirt_large (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8772,7 +8772,7 @@ GameObject:
   - component: {fileID: 5712687273682046438}
   - component: {fileID: 8365964418664585682}
   - component: {fileID: 1255869496815311057}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: floor_dirt_large (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9390,7 +9390,7 @@ GameObject:
   - component: {fileID: 280292797047752047}
   - component: {fileID: 4682431361648536733}
   - component: {fileID: 5885497209569464672}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: floor_dirt_large (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9657,7 +9657,7 @@ GameObject:
   - component: {fileID: 5394790919323215938}
   - component: {fileID: 6109211290008832357}
   - component: {fileID: 7278827774922879697}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: floor_dirt_large (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9964,7 +9964,7 @@ GameObject:
   - component: {fileID: 1653313632541656994}
   - component: {fileID: 3348725436985063431}
   - component: {fileID: 8240035447301762218}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: floor_dirt_large (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10047,7 +10047,7 @@ GameObject:
   - component: {fileID: 6072733722264411218}
   - component: {fileID: 1302486062678819155}
   - component: {fileID: 3675205207948169236}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: floor_dirt_large
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10164,7 +10164,7 @@ GameObject:
   - component: {fileID: 1314273226460742885}
   - component: {fileID: 2496007510086163706}
   - component: {fileID: 6396859058273389178}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: floor_dirt_large (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10916,7 +10916,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a890510f9344b4ea28e92b86c4d54a16, type: 3}
---- !u!4 &1666016393760779995 stripped
+--- !u!4 &9165773959316046246 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4862933293269292376, guid: a890510f9344b4ea28e92b86c4d54a16, type: 3}
   m_PrefabInstance: {fileID: 4345906339335345406}
@@ -10972,6 +10972,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 14ab8e5ea05380c4a85d47a0d359d415, type: 3}
       propertyPath: m_Name
       value: stairs_wall_left
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 14ab8e5ea05380c4a85d47a0d359d415, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
