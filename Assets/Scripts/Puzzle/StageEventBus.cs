@@ -29,8 +29,6 @@ public class StageEventBus : DestroySingleton<StageEventBus>
     {
         if (stageEvents.TryGetValue(puzzleType, out var thisEvent))
         {
-            //동일 UnityAction 중복 구독 방지
-            if (!thisEvent.GetPersistentEventCount().Equals(0))
                 thisEvent.AddListener(listener);
         }
 

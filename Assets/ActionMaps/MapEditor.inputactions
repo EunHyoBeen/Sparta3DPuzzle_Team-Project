@@ -1,0 +1,74 @@
+{
+    "name": "MapEditor",
+    "maps": [
+        {
+            "name": "MapEditor",
+            "id": "0cc30346-b77a-4a0a-ba32-0acc8f23692e",
+            "actions": [
+                {
+                    "name": "OnScroll",
+                    "type": "Value",
+                    "id": "59ad0066-d97c-4099-ba5f-2729e0f80e8f",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "OnLeftButton",
+                    "type": "Button",
+                    "id": "8db35276-2aa2-467d-9993-b9b5ea6d6aba",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "OnRightButton",
+                    "type": "Value",
+                    "id": "03d9278e-9f97-417b-b21f-bf3ca9bf621d",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0cd6671e-b30c-4557-8b22-727e2612bc32",
+                    "path": "<Mouse>/scroll",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OnScroll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1ed8d14a-b387-4c53-8a51-80dfa7559ed3",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OnLeftButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f3855e30-ba79-455f-8055-b64b7aeb7da3",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OnRightButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

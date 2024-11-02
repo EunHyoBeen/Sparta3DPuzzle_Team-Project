@@ -226,7 +226,7 @@ MonoBehaviour:
   jumpForce: 80
   groundLayerMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 2048
   cameraContainer: {fileID: 9156224291686969936}
   minXRot: -85
   maxXRot: 85

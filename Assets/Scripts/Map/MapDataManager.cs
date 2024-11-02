@@ -7,15 +7,16 @@ using UnityEngine.SceneManagement;
 
 
 
-public class MapDataManager : Singleton<MapDataManager>
-{
-    public GameObject saveMap;
-    private readonly List<MapElement> mapData = new List<MapElement>();
+public class MapDataManager : MonoBehaviour
+{ 
+    private GameObject mapContainer;
+    private  List<MapElement> mapData = new List<MapElement>();
     private string filePath;
 
-    protected override void Awake()
+
+    public void Init(GameObject container)
     {
-        base.Awake();
+        mapContainer = container;
     }
 
 
@@ -30,9 +31,9 @@ public class MapDataManager : Singleton<MapDataManager>
         filePath = Application.dataPath  + $"/MapData/MapData_{mapName}.json";
         
         mapData.Clear();
-        for (int i = 0; i < saveMap.transform.childCount; i++)
+        for (int i = 0; i < mapContainer.transform.childCount; i++)
         {
-            var child = saveMap.transform.GetChild(i);
+            var child = mapContainer.transform.GetChild(i);
             MapElement newMapData = new MapElement(
                 child.name,
                 child.position,
@@ -42,7 +43,7 @@ public class MapDataManager : Singleton<MapDataManager>
             mapData.Add(newMapData);
         }
 
-        string jsonData = JsonUtility.ToJson(new SerializableMapData(mapData), true);
+        string jsonData = JsonUtility.ToJson(new MapElementContainer(mapData), true);
         File.WriteAllText(filePath, jsonData);
         Debug.Log($"맵 데이터가 저장 됐습니다: '{mapName}' 경로: {filePath}");
     }
@@ -59,17 +60,19 @@ public class MapDataManager : Singleton<MapDataManager>
         }
         string jsonData = File.ReadAllText(filePath);
 
-        SerializableMapData loadedData = JsonUtility.FromJson<SerializableMapData>(jsonData);
+        MapElementContainer loadedElementContainer = JsonUtility.FromJson<MapElementContainer>(jsonData);
         Debug.Log($"로딩된 데이터: {filePath}");
-        return loadedData != null ? loadedData.elements : new List<MapElement>();
+        return loadedElementContainer != null ? loadedElementContainer.elements : new List<MapElement>();
     }
 }
+
+
 [System.Serializable]
-public class SerializableMapData
+public class MapElementContainer
 {
     public List<MapElement> elements;
 
-    public SerializableMapData(List<MapElement> elements)
+    public MapElementContainer(List<MapElement> elements)
     {
         this.elements = elements;
     }
