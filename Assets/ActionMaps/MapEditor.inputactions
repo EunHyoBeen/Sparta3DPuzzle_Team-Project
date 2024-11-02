@@ -25,12 +25,39 @@
                 },
                 {
                     "name": "OnRightButton",
+                    "type": "Button",
+                    "id": "3fe34044-1cb6-4bee-9c7d-4face4b97b48",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "OnLeftButtonMove",
+                    "type": "Value",
+                    "id": "a41d6e82-1540-4501-ab3c-92ad0e29ce90",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "OnRightButtonMove",
                     "type": "Value",
                     "id": "03d9278e-9f97-417b-b21f-bf3ca9bf621d",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "OnScrollButton",
+                    "type": "Button",
+                    "id": "c3bc31f3-0102-4e4e-86f2-8fdd1794c768",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -59,11 +86,44 @@
                 {
                     "name": "",
                     "id": "f3855e30-ba79-455f-8055-b64b7aeb7da3",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OnRightButtonMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "531a1292-5f6a-4f93-a2ec-054e083d9ae6",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OnLeftButtonMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8a0e86fb-1e80-4b36-bd85-d0385362b002",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "OnRightButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ef55ef3c-c0c2-49b9-b417-934596e97856",
+                    "path": "<Mouse>/middleButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OnScrollButton",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

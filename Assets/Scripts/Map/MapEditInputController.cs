@@ -7,23 +7,66 @@ using UnityEngine.InputSystem;
 //SendMessages 방식으로 작동 
 public class MapEditInputController : MonoBehaviour
 {
-    public event Action OnLeftButtonEvent;
-    public event Action<Vector2> OnRightButtonEvent;
+    public event Action<Vector2> OnLeftButtonMoveEvent;
+    public event Action<Vector2> OnRightButtonLookEvent;
     public event Action<Vector2> OnScrollEvent;
-    
-    
-    public void OnLeftButton(InputValue value)
+
+    private bool isCanMoveButtonOn = false;
+    private bool isRightButtonOn = false;
+
+    public void OnLeftButton(InputAction.CallbackContext context)
     {
-        OnLeftButtonEvent?.Invoke();
+        if (context.phase == InputActionPhase.Started)
+            isCanMoveButtonOn = true;
+        else if (context.phase == InputActionPhase.Canceled)
+            isCanMoveButtonOn = false;
     }
     
-    public void OnRightButton(InputValue value)
+    public void OnScrollButton(InputAction.CallbackContext context)
     {
-        OnRightButtonEvent?.Invoke(value.Get<Vector2>());
+        if (context.phase == InputActionPhase.Started)
+            isCanMoveButtonOn = true;
+        else if (context.phase == InputActionPhase.Canceled)
+            isCanMoveButtonOn = false;
     }
-    
-    public void OnScroll(InputValue value)
+
+
+    public void OnLeftButtonMove(InputAction.CallbackContext context)
     {
-        OnScrollEvent?.Invoke(value.Get<Vector2>());
+        if (isCanMoveButtonOn)
+            OnLeftButtonMoveEvent?.Invoke(context.ReadValue<Vector2>());
+        else
+        {
+            OnLeftButtonMoveEvent?.Invoke(Vector2.zero);
+        }
+    }
+
+    public void OnRightButton(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+            isRightButtonOn = true;
+        else if (context.phase == InputActionPhase.Canceled)
+            isRightButtonOn = false;
+    }
+
+    public void OnRightButtonMove(InputAction.CallbackContext context)
+    {
+        if (isRightButtonOn)
+            OnRightButtonLookEvent?.Invoke(context.ReadValue<Vector2>());
+        else
+        {
+            OnRightButtonLookEvent?.Invoke(Vector2.zero);
+        }
+    }
+
+    public void OnScroll(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            if (context.ReadValue<Vector2>().y > 0)
+                OnScrollEvent?.Invoke(new Vector2(0, 1));
+            else if (context.ReadValue<Vector2>().y < 0)
+                OnScrollEvent?.Invoke(new Vector2(0, -1));
+        }
     }
 }
