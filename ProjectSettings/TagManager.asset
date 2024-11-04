@@ -14,7 +14,7 @@ TagManager:
   - UI
   - Player
   - Wall
-  - Floor
+  - 
   - Goal
   - Interactable
   - Ground
