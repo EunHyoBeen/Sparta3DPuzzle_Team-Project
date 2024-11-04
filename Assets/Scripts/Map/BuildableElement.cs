@@ -22,7 +22,6 @@ public class BuildableElement : MonoBehaviour
     private Material buildableMaterial;
     private Material nonBuildableMaterial;
 
-    private bool isBuilt = true;
     public bool CanBuild { get; private set; }
      private void Awake()
     {
@@ -31,24 +30,16 @@ public class BuildableElement : MonoBehaviour
         buildableMaterial = Resources.Load<Material>($"Map/Materials/Green");       
         nonBuildableMaterial = Resources.Load<Material>($"Map/Materials/Red");       
     }
-
-    public void EnterBuildMode()
-    {
-        isBuilt = false;
-    }
+     
 
     public void Built()
     {
-        isBuilt = true;
-        mashRenderer.material = originMaterial;
-        Debug.Log("건설완료");
+         mashRenderer.material = originMaterial;
+         Debug.Log("건설완료");
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
-        if(isBuilt)
-            return;
-        
         if (other.gameObject.layer == LayerMask.NameToLayer("Terrain"))
         {
             CanBuild = true;
@@ -63,12 +54,12 @@ public class BuildableElement : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit(Collision other)
+
+    private void OnTriggerExit(Collider other)
     {
-        if(isBuilt)
-            return;
-        
         CanBuild = false;
         mashRenderer.material = nonBuildableMaterial;
+
     }
+    
 }

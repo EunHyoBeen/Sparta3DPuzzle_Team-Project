@@ -58,6 +58,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "OnDirectionalInput",
+                    "type": "Value",
+                    "id": "64571217-f7f6-467d-a1a8-5dca47274e98",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -126,6 +135,61 @@
                     "action": "OnScrollButton",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "WSAD",
+                    "id": "ee27d2f7-1994-49ee-981f-548dcfa83f08",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OnDirectionalInput",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "36ba574f-fc82-4461-a0bf-b0b66ae05c8f",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OnDirectionalInput",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "911da585-e327-43f0-86da-5dbe2612da37",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OnDirectionalInput",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "5d092a59-ee0b-4b0a-857b-b5a724e95279",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OnDirectionalInput",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "efa91bfc-91b1-4039-a025-587bf705f01b",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OnDirectionalInput",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }

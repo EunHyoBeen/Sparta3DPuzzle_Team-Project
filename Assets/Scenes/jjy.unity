@@ -1557,6 +1557,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c3bc31f3-0102-4e4e-86f2-8fdd1794c768
     m_ActionName: MapEditor/OnScrollButton[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1791021389}
+        m_TargetAssemblyTypeName: MapEditInputController, Assembly-CSharp
+        m_MethodName: OnDirectionalInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 64571217-f7f6-467d-a1a8-5dca47274e98
+    m_ActionName: MapEditor/OnMove[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: MapEditor
@@ -1574,7 +1590,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a101e82044545de8e826bc6ac4d32c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 100
+  rotationSpeed: 12
   moveSpeed: 12
   zoomSpeed: 1
 --- !u!114 &1791021395
@@ -1589,7 +1605,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8db5f435a4e86040a01696eb6f25f4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curElement: {fileID: 0}
+  snapingThreshold: 2
+  detectDistance: 2
 --- !u!1 &1937256652
 GameObject:
   m_ObjectHideFlags: 0
@@ -1859,7 +1876,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6511119022458639938, guid: 66bd4b76b9497c14690eef07fc3e26da, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6511119022458639938, guid: 66bd4b76b9497c14690eef07fc3e26da, type: 3}
       propertyPath: m_LocalPosition.z
