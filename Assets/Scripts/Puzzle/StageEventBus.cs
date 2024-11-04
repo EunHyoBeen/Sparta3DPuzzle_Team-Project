@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-//구독자인 경우 , 몇번 퍼즐로부터 정보를 받아올 것 인지
-//발행자인 경우 , 몇번 퍼즐로서 정보를 줄 것인지 
-
 public enum PuzzleType
 {
     Puzzle1, 
@@ -45,6 +42,9 @@ public class StageEventBus : DestroySingleton<StageEventBus>
         if (stageEvents.TryGetValue(puzzleType, out var thisEvent))
         {
             thisEvent.RemoveListener(listener);
+
+            if (thisEvent.GetPersistentEventCount() == 0)
+                stageEvents.Remove(puzzleType);
         }
     }
 

@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 //SendMessages 방식으로 작동 
 public class MapEditInputController : MonoBehaviour
 {
+    
+    public event Action OnLeftButtonEvent;
     public event Action<Vector2> OnLeftButtonMoveEvent;
     public event Action<Vector2> OnRightButtonLookEvent;
     public event Action<Vector2> OnScrollEvent;
@@ -17,7 +19,11 @@ public class MapEditInputController : MonoBehaviour
     public void OnLeftButton(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started)
+        {
             isCanMoveButtonOn = true;
+            OnLeftButtonEvent?.Invoke();
+        }
+
         else if (context.phase == InputActionPhase.Canceled)
             isCanMoveButtonOn = false;
     }

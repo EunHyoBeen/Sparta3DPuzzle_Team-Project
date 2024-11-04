@@ -10,15 +10,16 @@ public class MapGenerator : MonoBehaviour
     private MapType _type;
     private float tileSize;
     private GameObject mapContainer;
-    public void InitData(int width, int height, MapType type , GameObject container)
+
+    public void InitData(int width, int height, MapType type, GameObject container)
     {
         _width = width;
         _height = height;
         _type = type;
         mapContainer = container;
     }
-    
-    
+
+
     [ContextMenu("맵삭제")]
     void ClearAllElement()
     {
@@ -30,10 +31,9 @@ public class MapGenerator : MonoBehaviour
 
     public void GenerateDefaultMap()
     {
-         
         GameObject defaultTerrain = Resources.Load<GameObject>($"Map/{_type.ToString()}/terrain");
 
-        
+
         switch (_type)
         {
             case MapType.Space:
@@ -46,9 +46,9 @@ public class MapGenerator : MonoBehaviour
                 //maze 프리펩을 못 찾음 
                 break;
         }
-        
-        
-        for (int i = 0; i < _height ; i++)
+
+
+        for (int i = 0; i < _height; i++)
         {
             for (int j = 0; j < _width; j++)
             {
@@ -60,7 +60,6 @@ public class MapGenerator : MonoBehaviour
 
     public void GenerateByMapData(List<MapElement> mapData)
     {
-
         ClearAllElement();
         foreach (var element in mapData)
         {

@@ -43,13 +43,13 @@ public class MapEditCamMovement : MonoBehaviour
             0
         );
 
-        EditCam.transform.position += movement * moveSpeed;
+        EditCam.transform.position += movement * (moveSpeed * Time.deltaTime);
     }
 
     private void Look()
     {
-        float xAngle = -curCameraLookDir.y * rotationSpeed;
-        float yAngle = curCameraLookDir.x * rotationSpeed;
+        float xAngle = -curCameraLookDir.y * rotationSpeed * Time.deltaTime;
+        float yAngle = curCameraLookDir.x * rotationSpeed * Time.deltaTime;
 
         Vector3 currentRotation = EditCam.transform.eulerAngles;
         currentRotation.x += xAngle;
