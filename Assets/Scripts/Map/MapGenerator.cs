@@ -1,11 +1,17 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum MapType
+{
+    Space,
+    Dungeon,
+    Maze
+}
+
 public class MapGenerator : MonoBehaviour
 {
-    private MapType _type;
+    public MapType Type { get; private set;}
     private float tileSize;
     private GameObject mapContainer; 
 
@@ -26,7 +32,7 @@ public class MapGenerator : MonoBehaviour
         GameObject defaultTerrain = Resources.Load<GameObject>($"Map/{type.ToString()}/terrain");
         mapContainer = new GameObject("Map Container");
         
-        switch (_type)
+        switch (Type)
         {
             case MapType.Space:
                 tileSize = 2f;

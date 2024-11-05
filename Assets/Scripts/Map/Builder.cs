@@ -9,11 +9,10 @@ public class Builder : MonoBehaviour
     
     [SerializeField]float snapDistance = 0.1f; 
     [SerializeField]float snapSpeed = 30f; 
-
     
     private BuildableElement curElement;
     private MapEditInputController controller;
-
+    private string curElementResourcePath;
 
     private string curElementData; 
     private Vector3 curSnapPos;
@@ -29,39 +28,37 @@ public class Builder : MonoBehaviour
     private void Start()
     {
         controller.OnLeftButtonEvent += TryBuildElement;
-
-        CreateBuildElement();
     }
 
 
     //TODO 나중에는 UI에서 값 받아와서 생성 
-    public void CreateBuildElement()
+    public void CreateBuildElement(string path)
     {
-        curElement = null;
-        //GameObject obj = Instantiate(Resources.Load<GameObject>($"Map/Space/tunnel_diagonal_long_A"));
-        //GameObject obj = Instantiate(Resources.Load<GameObject>($"Map/Space/rocks_A"));
-       GameObject obj = Instantiate(Resources.Load<GameObject>($"Map/Space/terrain"));
+        DeleteBuildElement();
+        curElementResourcePath = path;
         
+        GameObject obj = Instantiate(Resources.Load<GameObject>(curElementResourcePath));
         obj.AddComponent<Rigidbody>().freezeRotation = true;
         obj.GetComponent<Rigidbody>().isKinematic = true;
         obj.GetComponent<Collider>().isTrigger = true;
-        
-        
         obj.layer = LayerMask.NameToLayer("Default");
+        
+        
         curElement = obj.AddComponent<BuildableElement>();
         StartCoroutine(MoveCurElement());
     }
 
     public void DeleteBuildElement()
     {
+        if(curElement !=null)
+            Destroy(curElement.gameObject);
         
-        Destroy(curElement.gameObject);
         curElement = null;
     }
 
     public void Build()
     {
-        GameObject obj = Instantiate(Resources.Load<GameObject>($"Map/Space/terrain"),DetectNearElement(),Quaternion.identity);
+        GameObject obj = Instantiate(Resources.Load<GameObject>(curElementResourcePath),DetectNearElement(),Quaternion.identity);
     }
 
 
@@ -103,7 +100,11 @@ public class Builder : MonoBehaviour
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
         {
             isSnapped = true;
-            Vector3 objectTopPosition = hit.point;  
+            Vector3 objectTopPosition = hit.point;
+
+            if (hit.collider.gameObject.layer == curElement.gameObject.layer)
+                return hit.transform.position;
+                
             return objectTopPosition;
         }
         
@@ -112,8 +113,6 @@ public class Builder : MonoBehaviour
     }
 
     
-    
-
 
     private void TryBuildElement()
     {

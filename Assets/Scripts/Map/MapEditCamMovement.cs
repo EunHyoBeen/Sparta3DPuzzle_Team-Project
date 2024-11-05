@@ -38,7 +38,6 @@ public class MapEditCamMovement : MonoBehaviour
 
     private void Move()
     {
-        // 방향 벡터 계산
         Vector3 dir = EditCam.forward * curKeyboardMovementDir.y + EditCam.right * curKeyboardMovementDir.x;
         
         dir.Normalize();

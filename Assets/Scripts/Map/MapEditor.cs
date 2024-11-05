@@ -1,15 +1,10 @@
 using System;
 using UnityEngine;
 
-public enum MapType
-{
-    Space,
-    Dungeon,
-    Maze
-}
+
 
  
-public class MapEditor : Singleton<MapEditor>
+public class MapEditor : DestroySingleton<MapEditor>
 {
     
     //MapEditor Fields
@@ -20,7 +15,8 @@ public class MapEditor : Singleton<MapEditor>
     public MapEditInputController controller;
     public MapGenerator generator;
     public MapDataManager dataManager;
-    
+    public Builder builder;
+
     
     
     
@@ -30,6 +26,7 @@ public class MapEditor : Singleton<MapEditor>
         controller = GetComponent<MapEditInputController>();
         generator = GetComponent<MapGenerator>();
         dataManager = GetComponent<MapDataManager>();
+        builder = GetComponent<Builder>();
     }
 
     private void Start()

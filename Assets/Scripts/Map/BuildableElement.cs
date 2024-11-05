@@ -3,19 +3,10 @@ using System.Collections;
 using UnityEngine;
 
 
-public enum ElementType
-{
-    Terrain,
-    Wall,
-    Prop,
-    Puzzle,
-    Trap
-}
 
 
 public class BuildableElement : MonoBehaviour
 {
-    [SerializeField]private ElementType type;
    
     private Material originMaterial;
     private MeshRenderer mashRenderer;

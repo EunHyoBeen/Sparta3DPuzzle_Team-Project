@@ -20,6 +20,7 @@ public class DestroySingleton<T> : MonoBehaviour where T : MonoBehaviour
                     _instance = singletonObject.AddComponent<T>();
                 }
             }
+
             return _instance;
         }
     }
@@ -31,7 +32,6 @@ public class DestroySingleton<T> : MonoBehaviour where T : MonoBehaviour
         if (_instance == null)
         {
             _instance = this as T;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
