@@ -14,7 +14,6 @@ public class MapEditor : DestroySingleton<MapEditor>
     //MapEditor Components 
     public MapEditInputController controller;
     public MapGenerator generator;
-    public MapDataManager dataManager;
     public Builder builder;
 
     public GameObject mapContainer ;
@@ -23,9 +22,9 @@ public class MapEditor : DestroySingleton<MapEditor>
     protected override void Awake()
     {
         base.Awake();
+        Debug.Log("초기화");
         controller = GetComponent<MapEditInputController>();
         generator = GetComponent<MapGenerator>();
-        dataManager = GetComponent<MapDataManager>();
         builder = GetComponent<Builder>();
         
         mapContainer = GameObject.Find("MapContainer");
@@ -34,11 +33,6 @@ public class MapEditor : DestroySingleton<MapEditor>
         {
             mapContainer = new GameObject("MapContainer");
         }
-    }
-
-    private void Start()
-    {
-        
     }
     
     

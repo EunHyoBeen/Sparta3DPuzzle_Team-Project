@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9217314036324728439}
   - component: {fileID: 1833366465363167283}
   - component: {fileID: 252685177655183637}
-  m_Layer: 13
+  m_Layer: 12
   m_Name: terrain_mining
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4285757830726009738}
   - component: {fileID: 8612803975336620878}
-  m_Layer: 13
+  m_Layer: 12
   m_Name: terrain_mining
   m_TagString: Untagged
   m_Icon: {fileID: 0}

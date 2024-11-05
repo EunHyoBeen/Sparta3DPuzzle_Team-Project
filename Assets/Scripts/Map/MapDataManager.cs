@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 
 
-public class MapDataManager : MonoBehaviour
+public class MapDataManager : DestroySingleton<MapDataManager>
 { 
     private GameObject mapContainer;
     private  List<MapElement> mapData = new List<MapElement>();
@@ -21,18 +21,11 @@ public class MapDataManager : MonoBehaviour
     }
 
 
-    [ContextMenu("맵데이터 저장")]
-    public void SaveMapData()
+     public void SaveMapData(string mapName)
     {
         if(mapContainer == null)
             return;
-        
-        
-        string mapName = "";
-        if (mapName == "")
-            mapName = SceneManager.GetActiveScene().name;
-
-        //TODO 빌드 전에 persistentDataPath로 변경
+ 
         filePath = Application.dataPath  + $"/MapData/MapData_{mapName}.json";
         
         mapData.Clear();
@@ -53,8 +46,7 @@ public class MapDataManager : MonoBehaviour
         Debug.Log($"맵 데이터가 저장 됐습니다: '{mapName}' 경로: {filePath}");
     }
 
-    [ContextMenu("맵데이터 로드")]
-    public List<MapElement> LoadMapData()
+     public List<MapElement> LoadMapData()
     {
         filePath = Path.Combine(Application.dataPath, $"MapData/MapData_jjy.json");
         
@@ -71,8 +63,7 @@ public class MapDataManager : MonoBehaviour
     }
 
     
-    [ContextMenu("맵 생성 ")]
-    public void CreateMap()
+     public void CreateMap()
     {
         MapEditor.Instance.generator.GenerateByMapData(LoadMapData());
     }

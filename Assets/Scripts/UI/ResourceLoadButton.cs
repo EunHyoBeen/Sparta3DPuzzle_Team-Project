@@ -11,8 +11,6 @@ public class ResourceLoadButton : MonoBehaviour
     {
         _resourcePath = resourcePath;
         icon = Resources.Load<Sprite>(iconPath);
-        Debug.Log(iconPath);
-        Debug.Log(icon);
         gameObject.GetComponent<Image>().sprite = icon;
     }
 

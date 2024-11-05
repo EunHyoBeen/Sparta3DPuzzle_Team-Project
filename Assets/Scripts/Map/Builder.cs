@@ -41,10 +41,19 @@ public class Builder : MonoBehaviour
         GameObject obj = Instantiate(Resources.Load<GameObject>(curElementResourcePath));
         obj.AddComponent<Rigidbody>().freezeRotation = true;
         obj.GetComponent<Rigidbody>().isKinematic = true;
-        obj.GetComponent<Collider>().isTrigger = true;
-        obj.layer = LayerMask.NameToLayer("Default");
-        
+        obj.GetComponentInChildren<Collider>().isTrigger = true;
         curElement = obj.AddComponent<BuildableElement>();
+
+ 
+        if (obj.layer == LayerMask.NameToLayer("Terrain"))
+                curElement.SetTerrain();
+        
+        
+        
+        obj.layer = 0;
+        obj.transform.GetChild(0).gameObject.layer = 0;
+
+        
         StartCoroutine(MoveCurElement());
     }
 
@@ -99,19 +108,28 @@ public class Builder : MonoBehaviour
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
         {
             isSnapped = true;
-            Vector3 objectTopPosition = hit.point;
+            if (curElement.isTerrain == true)
+            {
+                Debug.Log("지형입니다");
+                return CalculateTerrainPosition(hit);
+            }
 
-            if (hit.collider.gameObject.layer == curElement.gameObject.layer)
-                return hit.transform.position;
-                
-            return objectTopPosition;
+            return hit.point;
         }
-        
+
         isSnapped = false;
         return ray.origin + ray.direction * 3f;
     }
-
     
+
+    private Vector3 CalculateTerrainPosition(RaycastHit hit) 
+    {
+         Vector3 gameObjectBottomCenter = hit.transform.position;
+         float colliderHeight = hit.collider.bounds.size.y;
+         Vector3 topPosition = gameObjectBottomCenter + colliderHeight * Vector3.up ;
+         
+        return topPosition;
+    }
 
     private void TryBuildElement()
     {

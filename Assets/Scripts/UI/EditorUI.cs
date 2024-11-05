@@ -14,7 +14,8 @@ public class EditorUI : MonoBehaviour
 {
     [SerializeField] private Transform elementButtonContainer;
     [SerializeField] private Button[] elementTypeButtons;
- 
+    [SerializeField] private Button playerPosButton;
+    [SerializeField] private Button endPointButton;
     private Button curButton;
     private List<GameObject> activeElementResourceButtons = new List<GameObject>();
     private MapType mapType;
@@ -26,12 +27,12 @@ public class EditorUI : MonoBehaviour
         MapEditor.Instance.generator.OnGenerateDefaultMap += Activate;
         mapType = MapEditor.Instance.generator.Type;
         SetElementButtonByType(3);
-        InitElementTypeButton();
+        InitButton();
     }
  
     
  
-    private void InitElementTypeButton()
+    private void InitButton()
     {
         for (int i = 0; i < elementTypeButtons.Length; i++)
         {
@@ -39,6 +40,9 @@ public class EditorUI : MonoBehaviour
             elementTypeButtons[i].onClick.AddListener(() => SetElementButtonByType(index));
         }
         
+        
+        playerPosButton.onClick.AddListener(SetPlayerSpawnPosElement);
+        endPointButton.onClick.AddListener(SetEndPointElement);
     }
 
     
@@ -51,9 +55,17 @@ public class EditorUI : MonoBehaviour
 
     public void SetPlayerSpawnPosElement()
     {
+        playerPosButton.interactable = false;
         MapEditor.Instance.builder.CreateBuildElement($"Map/{MapEditor.Instance.generator.Type}/PlayerPosIndicator");
     }
 
+    public void SetEndPointElement()
+    {
+        endPointButton.interactable = false;
+        MapEditor.Instance.builder.CreateBuildElement($"Map/{MapEditor.Instance.generator.Type}/CustomGameEndPoint");
+    }
+
+    
     public void SetElementButtonByType(int type)
     {
 
