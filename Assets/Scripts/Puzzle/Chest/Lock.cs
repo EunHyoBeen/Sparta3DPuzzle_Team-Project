@@ -2,25 +2,41 @@ using UnityEngine;
 
 public class Lock : MonoBehaviour
 {
-    public int lockID; // 자물쇠의 고유 ID
-    private Chest chest; // Chest 참조
+    public Key requiredKey; // 자물쇠를 여는 데 필요한 키
+    private bool isUnlocked = false;
 
-    private void Awake()
+    private PlayerInventory playerInventory;
+
+    private void Start()
     {
-        chest = GetComponentInParent<Chest>(); // 부모 오브젝트에서 Chest 찾기
+        playerInventory = FindObjectOfType<PlayerInventory>(); // 플레이어 인벤토리 찾기
     }
 
-    public void TryUnlock(Key key)
+    // 자물쇠가 열려 있는지 확인
+    public bool IsUnlocked()
     {
-        if (key != null && key.keyID == lockID)
-        {
-            Debug.Log("Correct key! Unlocking the chest.");
-            chest.Open(); // 상자 열기
-            Destroy(this);
-        }
-        else
-        {
-            Debug.Log("Wrong key.");
-        }
+        return isUnlocked;
+    }
+
+    public bool CanUnlock()
+    {
+        return playerInventory != null && playerInventory.HasKey(requiredKey);
+    }
+
+    // 자물쇠를 여는 시도
+    public bool TryUnlock()
+    {
+        // 자물쇠가 이미 열려 있으면 true 반환
+        if (isUnlocked) return true;
+
+        // 자물쇠를 열 수 있는 키가 없으면 false 반환
+        if (playerInventory == null || !playerInventory.HasKey(requiredKey))
+            return false;
+
+        // 키가 있으면 자물쇠를 열고 true 반환
+        isUnlocked = true;
+        Debug.Log("자물쇠가 열렸습니다!");
+        Destroy(gameObject);
+        return true;
     }
 }

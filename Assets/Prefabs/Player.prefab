@@ -192,6 +192,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 6079e506-cf76-41be-b8c4-87af08a44ce8
     m_ActionName: Player/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: dbdd5475-9e8b-4292-b63d-8a5dc7dff906
+    m_ActionName: Player/Interaction[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -210,6 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
+  itemData: {fileID: 0}
 --- !u!114 &3585049884456139988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,7 +231,7 @@ MonoBehaviour:
   jumpForce: 80
   groundLayerMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 54
   cameraContainer: {fileID: 9156224291686969936}
   minXRot: -85
   maxXRot: 85
