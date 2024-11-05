@@ -21,7 +21,6 @@ public class ChestInteractable : MonoBehaviour, IInteractable
 
     public string GetInteractPrompt()
     {
-        // 상자가 이미 열렸으면 "열 수 없다" 표시
         if (isOpen) return "";
 
         // 자물쇠가 없는 경우 바로 열 수 있음
