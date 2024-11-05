@@ -29,7 +29,7 @@ public class MapGenerator : MonoBehaviour
 
     public void GenerateDefaultMap(MapType type,int width,int height)
     {
-        GameObject defaultTerrain = Resources.Load<GameObject>($"Map/{type.ToString()}/terrain");
+        GameObject defaultTerrain = Resources.Load<GameObject>($"Map/{type.ToString()}/Terrain/terrain");
         mapContainer = new GameObject("Map Container");
         
         switch (Type)
@@ -41,8 +41,7 @@ public class MapGenerator : MonoBehaviour
                 tileSize = 4f;
                 break;
             case MapType.Maze:
-                //maze 프리펩을 못 찾음 
-                break;
+                 break;
         }
 
 

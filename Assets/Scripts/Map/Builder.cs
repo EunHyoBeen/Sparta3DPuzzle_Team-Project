@@ -31,8 +31,7 @@ public class Builder : MonoBehaviour
     }
 
 
-    //TODO 나중에는 UI에서 값 받아와서 생성 
-    public void CreateBuildElement(string path)
+     public void CreateBuildElement(string path)
     {
         DeleteBuildElement();
         curElementResourcePath = path;

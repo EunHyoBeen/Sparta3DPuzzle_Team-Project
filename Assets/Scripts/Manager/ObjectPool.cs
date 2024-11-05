@@ -6,10 +6,8 @@ public class ObjectPool : DestroySingleton<ObjectPool>
     
     [SerializeField]private GameObject prefab;
     [SerializeField] private int poolSize;
-
     
     private List<GameObject> pool = new List<GameObject>();
-    
     
     private void Start()
     {   

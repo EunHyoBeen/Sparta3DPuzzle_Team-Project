@@ -3,81 +3,51 @@ using System.Collections;
 using UnityEngine;
 
 
-
-
 public class BuildableElement : MonoBehaviour
 {
-   
     private Material originMaterial;
-    private MeshRenderer mashRenderer;
+    private MeshRenderer meshRenderer;
     private Material buildableMaterial;
     private Material nonBuildableMaterial;
 
     private Coroutine curCoroutine;
-    
+
     public bool CanBuild { get; private set; }
-     private void Awake()
+
+    private void Awake()
     {
-        mashRenderer = transform.GetChild(0).GetComponent<MeshRenderer>();
-        buildableMaterial = Resources.Load<Material>($"Map/Materials/Green");       
-        nonBuildableMaterial = Resources.Load<Material>($"Map/Materials/Red");       
+        meshRenderer = transform.GetChild(0).GetComponent<MeshRenderer>();
+        buildableMaterial = Resources.Load<Material>($"Map/Materials/Green");
+        nonBuildableMaterial = Resources.Load<Material>($"Map/Materials/Red");
     }
 
     private void Start()
     {
-        mashRenderer.material = nonBuildableMaterial;
+        meshRenderer.material = nonBuildableMaterial;
     }
 
- 
     
-    
-    
-    private void OnTriggerEnter(Collider other)
+
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Terrain"))
         {
-
-            if(curCoroutine != null)
-                StopCoroutine(curCoroutine);
-          
             CanBuild = true;
-            mashRenderer.material = buildableMaterial;
-            Debug.Log("건설 가능 지역 입니다");
+            meshRenderer.material = buildableMaterial;
         }
-       
+
         else
         {
-            Debug.Log(other.name);
             CanBuild = false;
-            mashRenderer.material = nonBuildableMaterial;
+            meshRenderer.material = nonBuildableMaterial;
         }
     }
-
-
+    
     private void OnTriggerExit(Collider other)
     {
-        StartNewCoroutine(ChangeMaterial());
-    }
-
-
-
-    private void StartNewCoroutine(IEnumerator coroutine)
-    {
-        if (curCoroutine != null)
-        {
-            StopCoroutine(curCoroutine);
-        }
-
-        curCoroutine = StartCoroutine(coroutine);
-    }
-
-    private IEnumerator ChangeMaterial()
-    {
         
-        CanBuild = false;
-         
-        yield return new WaitForSeconds(0.09f);
-        mashRenderer.material = nonBuildableMaterial;
+            CanBuild = false;
+            meshRenderer.material = nonBuildableMaterial;
+        
     }
-
 }
