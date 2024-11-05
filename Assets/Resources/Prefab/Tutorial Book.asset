@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 732b0365106e5f941ba5f337fecf1705, type: 3}
+  m_Name: Tutorial Book
+  m_EditorClassIdentifier: 
+  displayName: "\uD29C\uD1A0\uB9AC\uC5BC\uCC45"
+  description: "\uC870\uC791\uBC95\uC744 \uC54C\uB824\uC90D\uB2C8\uB2E4."
+  type: 0
+  icon: {fileID: 21300000, guid: ea5ee12e5c4e6e4429e6e52eea4d8627, type: 3}
+  dropPrefab: {fileID: 8325954871104720061, guid: cb36b671d182664448d5961b8b7c2e2a, type: 3}
