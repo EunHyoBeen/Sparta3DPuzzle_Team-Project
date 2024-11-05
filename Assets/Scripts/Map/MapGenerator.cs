@@ -5,20 +5,12 @@ using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
-    private int _width;
-    private int _height;
     private MapType _type;
     private float tileSize;
-    private GameObject mapContainer;
+    private GameObject mapContainer; 
 
-    public void InitData(int width, int height, MapType type, GameObject container)
-    {
-        _width = width;
-        _height = height;
-        _type = type;
-        mapContainer = container;
-    }
-
+    public event Action OnGenerateDefaultMap;
+    
 
     [ContextMenu("맵삭제")]
     void ClearAllElement()
@@ -29,11 +21,11 @@ public class MapGenerator : MonoBehaviour
         }
     }
 
-    public void GenerateDefaultMap()
+    public void GenerateDefaultMap(MapType type,int width,int height)
     {
-        GameObject defaultTerrain = Resources.Load<GameObject>($"Map/{_type.ToString()}/terrain");
-
-
+        GameObject defaultTerrain = Resources.Load<GameObject>($"Map/{type.ToString()}/terrain");
+        mapContainer = new GameObject("Map Container");
+        
         switch (_type)
         {
             case MapType.Space:
@@ -48,14 +40,16 @@ public class MapGenerator : MonoBehaviour
         }
 
 
-        for (int i = 0; i < _height; i++)
+        for (int i = 0; i < height; i++)
         {
-            for (int j = 0; j < _width; j++)
+            for (int j = 0; j < width; j++)
             {
                 Vector3 terrainPos = new Vector3(tileSize * j, 0, tileSize * i);
                 Instantiate(defaultTerrain, terrainPos, Quaternion.identity, mapContainer.transform);
             }
         }
+        
+        OnGenerateDefaultMap?.Invoke();
     }
 
     public void GenerateByMapData(List<MapElement> mapData)
