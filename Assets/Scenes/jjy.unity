@@ -1085,7 +1085,7 @@ GameObject:
   - component: {fileID: 542643540}
   - component: {fileID: 542643539}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: MapDataManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1413,7 +1413,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 100.000946, y: 0}
+  m_AnchoredPosition: {x: 100.00055, y: 0}
   m_SizeDelta: {x: 1200, y: 184}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &618150447
@@ -4639,7 +4639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a101e82044545de8e826bc6ac4d32c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 12
+  rotationSpeed: 20
   moveSpeed: 12
   zoomSpeed: 1
 --- !u!114 &1791021395
@@ -5522,7 +5522,7 @@ MonoBehaviour:
   m_VerticalScrollbar: {fileID: 0}
   m_HorizontalScrollbarVisibility: 2
   m_VerticalScrollbarVisibility: 2
-  m_HorizontalScrollbarSpacing: -3
+  m_HorizontalScrollbarSpacing: 0
   m_VerticalScrollbarSpacing: -3
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5821,7 +5821,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 646036884}
   m_HandleRect: {fileID: 646036883}
   m_Direction: 0
-  m_Value: -0.0000048828124
+  m_Value: -0.0000024414062
   m_Size: 0.8333333
   m_NumberOfSteps: 0
   m_OnValueChanged:
