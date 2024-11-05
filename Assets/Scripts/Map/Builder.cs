@@ -60,8 +60,6 @@ public class Builder : MonoBehaviour
         GameObject obj = Instantiate(Resources.Load<GameObject>(curElementResourcePath),DetectNearElement(),Quaternion.identity);
     }
 
-
-    //TODO 시점 상 절대 못 설치하는 위치가 있음 
     private IEnumerator MoveCurElement()
     {
 
@@ -84,11 +82,7 @@ public class Builder : MonoBehaviour
             yield return null;
         }
     }
-
     
-    
-    
-
     private Vector3 DetectNearElement()
     {
         RaycastHit hit;
