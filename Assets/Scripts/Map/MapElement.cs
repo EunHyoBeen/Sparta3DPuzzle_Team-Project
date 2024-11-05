@@ -8,7 +8,6 @@ public class MapElement
     public Vector3 position;
     public Quaternion rotation;
     public Vector3 localScale;
-
     
     public MapElement(string name, Vector3 position, Quaternion rotation, Vector3 localScale)
     {

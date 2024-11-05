@@ -12,6 +12,8 @@ public class Builder : MonoBehaviour
     
     private BuildableElement curElement;
     private MapEditInputController controller;
+    private MapGenerator  generator;
+    
     private string curElementResourcePath;
 
     private string curElementData; 
@@ -35,13 +37,12 @@ public class Builder : MonoBehaviour
     {
         DeleteBuildElement();
         curElementResourcePath = path;
-        
+        Debug.Log(path);
         GameObject obj = Instantiate(Resources.Load<GameObject>(curElementResourcePath));
         obj.AddComponent<Rigidbody>().freezeRotation = true;
         obj.GetComponent<Rigidbody>().isKinematic = true;
         obj.GetComponent<Collider>().isTrigger = true;
         obj.layer = LayerMask.NameToLayer("Default");
-        
         
         curElement = obj.AddComponent<BuildableElement>();
         StartCoroutine(MoveCurElement());
@@ -57,7 +58,12 @@ public class Builder : MonoBehaviour
 
     public void Build()
     {
-        GameObject obj = Instantiate(Resources.Load<GameObject>(curElementResourcePath),DetectNearElement(),Quaternion.identity);
+        GameObject obj = Instantiate(
+            Resources.Load<GameObject>(curElementResourcePath),
+            DetectNearElement(),  
+            Quaternion.identity, 
+            MapEditor.Instance.mapContainer.transform  
+        );
     }
 
     private IEnumerator MoveCurElement()
@@ -70,7 +76,7 @@ public class Builder : MonoBehaviour
              float distance = Vector3.Distance(curElement.transform.position, targetPosition);
 
 
-            if (distance > snapDistance && isSnapped)
+            if (distance < snapDistance && isSnapped)
             {
                  curElement.transform.position = Vector3.MoveTowards(curElement.transform.position, targetPosition, snapSpeed * Time.deltaTime);
             }

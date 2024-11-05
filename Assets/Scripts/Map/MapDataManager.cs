@@ -13,16 +13,21 @@ public class MapDataManager : MonoBehaviour
     private  List<MapElement> mapData = new List<MapElement>();
     private string filePath;
 
+    
 
-    public void Init(GameObject container)
+    private void Start()
     {
-        mapContainer = container;
+        mapContainer = MapEditor.Instance.mapContainer != null ? MapEditor.Instance.mapContainer :new GameObject("MapContainer");
     }
 
 
     [ContextMenu("맵데이터 저장")]
     public void SaveMapData()
     {
+        if(mapContainer == null)
+            return;
+        
+        
         string mapName = "";
         if (mapName == "")
             mapName = SceneManager.GetActiveScene().name;
@@ -31,7 +36,7 @@ public class MapDataManager : MonoBehaviour
         filePath = Application.dataPath  + $"/MapData/MapData_{mapName}.json";
         
         mapData.Clear();
-        for (int i = 0; i < mapContainer.transform.childCount; i++)
+        for (int i = 0; i <mapContainer.transform.childCount; i++)
         {
             var child = mapContainer.transform.GetChild(i);
             MapElement newMapData = new MapElement(
@@ -48,10 +53,10 @@ public class MapDataManager : MonoBehaviour
         Debug.Log($"맵 데이터가 저장 됐습니다: '{mapName}' 경로: {filePath}");
     }
 
-    
-    public List<MapElement> LoadMapData(string filename)
+    [ContextMenu("맵데이터 로드")]
+    public List<MapElement> LoadMapData()
     {
-        filePath = Path.Combine(Application.dataPath, $"MapData/{filename}.json");
+        filePath = Path.Combine(Application.dataPath, $"MapData/MapData_jjy.json");
         
         if (!File.Exists(filePath))
         {
@@ -63,6 +68,13 @@ public class MapDataManager : MonoBehaviour
         MapElementContainer loadedElementContainer = JsonUtility.FromJson<MapElementContainer>(jsonData);
         Debug.Log($"로딩된 데이터: {filePath}");
         return loadedElementContainer != null ? loadedElementContainer.elements : new List<MapElement>();
+    }
+
+    
+    [ContextMenu("맵 생성 ")]
+    public void CreateMap()
+    {
+        MapEditor.Instance.generator.GenerateByMapData(LoadMapData());
     }
 }
 

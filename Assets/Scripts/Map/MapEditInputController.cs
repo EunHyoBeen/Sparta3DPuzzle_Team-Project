@@ -89,4 +89,5 @@ public class MapEditInputController : MonoBehaviour
                 OnScrollEvent?.Invoke(new Vector2(0, -1));
         }
     }
+    
 }

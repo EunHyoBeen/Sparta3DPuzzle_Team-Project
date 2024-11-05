@@ -11,27 +11,29 @@ public enum MapType
 
 public class MapGenerator : MonoBehaviour
 {
-    public MapType Type { get; private set;}
+    public MapType Type { get; private set; }
     private float tileSize;
-    private GameObject mapContainer; 
+
+    private void Start()
+    {
+    }
 
     public event Action OnGenerateDefaultMap;
-    
+
 
     [ContextMenu("맵삭제")]
     void ClearAllElement()
     {
-        foreach (Transform child in mapContainer.transform)
+        foreach (Transform child in MapEditor.Instance.mapContainer.transform)
         {
             Destroy(child.gameObject);
         }
     }
 
-    public void GenerateDefaultMap(MapType type,int width,int height)
+    public void GenerateDefaultMap(MapType type, int width, int height)
     {
-        GameObject defaultTerrain = Resources.Load<GameObject>($"Map/{type.ToString()}/Terrain/terrain");
-        mapContainer = new GameObject("Map Container");
-        
+        GameObject defaultTerrain = Resources.Load<GameObject>($"Map/{type.ToString()}/terrain");
+
         switch (Type)
         {
             case MapType.Space:
@@ -41,7 +43,7 @@ public class MapGenerator : MonoBehaviour
                 tileSize = 4f;
                 break;
             case MapType.Maze:
-                 break;
+                break;
         }
 
 
@@ -50,23 +52,50 @@ public class MapGenerator : MonoBehaviour
             for (int j = 0; j < width; j++)
             {
                 Vector3 terrainPos = new Vector3(tileSize * j, 0, tileSize * i);
-                Instantiate(defaultTerrain, terrainPos, Quaternion.identity, mapContainer.transform);
+                Instantiate(defaultTerrain, terrainPos, Quaternion.identity, MapEditor.Instance.mapContainer.transform);
             }
         }
-        
+
         OnGenerateDefaultMap?.Invoke();
     }
 
     public void GenerateByMapData(List<MapElement> mapData)
     {
-        ClearAllElement();
+        GameObject loadedMap = new GameObject("lOADED MAP");
+        GameObject prefab;
         foreach (var element in mapData)
         {
-            GameObject prefab = Resources.Load<GameObject>($"Map/{element.name}");
-            GameObject obj = Instantiate(prefab, mapContainer.transform);
+            string elementName = RemoveCloneFormat(element);
+
+                if (elementName == "PlayerPosIndicator")
+                {
+                    prefab = Resources.Load<GameObject>($"Map/{Type}/Player");
+                }
+
+            else
+            {
+                prefab = Resources.Load<GameObject>($"Map/{Type}/{elementName}");
+            }
+
+
+            GameObject obj = Instantiate(prefab, loadedMap.transform);
             obj.transform.position = element.position;
             obj.transform.rotation = element.rotation;
             obj.transform.localScale = element.localScale;
         }
+    }
+
+    private string RemoveCloneFormat(MapElement element)
+    {
+        string elementName = element.name;
+
+        int cloneIndex = elementName.IndexOf("(Clone)");
+
+        if (cloneIndex >= 0)
+        {
+            elementName = elementName.Substring(0, cloneIndex);
+        }
+
+        return elementName;
     }
 }

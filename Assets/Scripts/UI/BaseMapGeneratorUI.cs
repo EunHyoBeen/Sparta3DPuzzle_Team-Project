@@ -13,8 +13,6 @@ public class BaseMapGeneratorUI : MonoBehaviour
     private int height;
     private MapType type;
     
- 
-
     
     public void GenerateBaseMap()
     {
@@ -38,8 +36,7 @@ public class BaseMapGeneratorUI : MonoBehaviour
         {
             height = 8;
         }
-
-
+        
 
         switch (dropdown_type.value)
         {

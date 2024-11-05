@@ -14,8 +14,7 @@ public class EditorUI : MonoBehaviour
 {
     [SerializeField] private Transform elementButtonContainer;
     [SerializeField] private Button[] elementTypeButtons;
-
-
+ 
     private Button curButton;
     private List<GameObject> activeElementResourceButtons = new List<GameObject>();
     private MapType mapType;
@@ -50,6 +49,11 @@ public class EditorUI : MonoBehaviour
     }
 
 
+    public void SetPlayerSpawnPosElement()
+    {
+        MapEditor.Instance.builder.CreateBuildElement($"Map/{MapEditor.Instance.generator.Type}/PlayerPosIndicator");
+    }
+
     public void SetElementButtonByType(int type)
     {
 
@@ -59,14 +63,15 @@ public class EditorUI : MonoBehaviour
             ReturnButtonsToPool();
 
         ElementType elementType = (ElementType)type;
-        string defaultResourcePath = $"Map/{mapType}/{elementType.ToString()}";
-        string defaultIconPath = $"UI/{elementType.ToString()}";
+        string defaultResourcePath = $"Map/{mapType}";
+        string defaultIconPath = $"UI/{mapType}/{elementType.ToString()}";
 
-        GameObject[] resourcePrefabs = Resources.LoadAll<GameObject>(defaultResourcePath);
+        Sprite[] iconFiles  = Resources.LoadAll<Sprite>(defaultIconPath);
 
-        foreach (var obj in resourcePrefabs)
+        foreach (var obj in iconFiles)
         {
             string resourcePath = $"{defaultResourcePath}/{obj.name}";
+            Debug.Log(resourcePath);
             string iconPath = $"{defaultIconPath}/{obj.name}";
             GameObject resourceButton = ObjectPool.Instance.GetObject();
             resourceButton.GetComponent<ResourceLoadButton>().Setting(resourcePath,iconPath);
