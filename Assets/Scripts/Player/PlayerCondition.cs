@@ -43,8 +43,6 @@ public class PlayerCondition : MonoBehaviour , IDamageable
 
     public bool UseStamina(float amount)
     {
-        Debug.Log("current value "+ stamina.curValue);
-        Debug.Log("amount "+ amount);
         if (stamina.curValue - amount < 0)
         {
             return false;
