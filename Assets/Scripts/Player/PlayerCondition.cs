@@ -11,6 +11,7 @@ public interface IDamageable
 public class PlayerCondition : MonoBehaviour , IDamageable
 {
     public UICondition uiCondition;
+    [SerializeField] private Transform spawnPoint;
 
     Condition health { get { return uiCondition.health; } }
     Condition stamina { get { return uiCondition.stamina; } }
@@ -30,7 +31,8 @@ public class PlayerCondition : MonoBehaviour , IDamageable
 
     public void Die()
     {
-        Debug.Log("ав╬З╢ы.");
+        transform.position = spawnPoint.position;
+        health.curValue = health.MaxValue;
     }
 
     public void TakePhysicalDamage(int damage)

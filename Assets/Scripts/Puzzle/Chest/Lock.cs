@@ -26,6 +26,10 @@ public class Lock : MonoBehaviour
 
         foreach (ItemSlot data in inventory.slots)
         {
+            if (data.item == null)
+            {
+                return false;
+            }
             if (data.item.displayName.Equals(requiredKey.displayName))
             {
                 return true;
