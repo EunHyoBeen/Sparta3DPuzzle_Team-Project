@@ -15,7 +15,8 @@ public class Board : MonoBehaviour
 
 	private IEnumerator Start()
 	{
-		tileList = new List<Tile>();
+        Cursor.lockState = CursorLockMode.None;
+        tileList = new List<Tile>();
 		SpawnTiles();
 
 		UnityEngine.UI.LayoutRebuilder.ForceRebuildLayoutImmediate(tilePerent.GetComponent<RectTransform>());
@@ -25,6 +26,7 @@ public class Board : MonoBehaviour
 		tileList.ForEach(x => x.SetCorrectPosition());
 		StartCoroutine("OnSuffle");
 	}
+
 	private void SpawnTiles()
 	{
 		for (int y = 0; y < puzzleSize.y; ++y)
@@ -72,7 +74,9 @@ public class Board : MonoBehaviour
 		List<Tile> tiles = tileList.FindAll(x => x.Iscorrected == true);
 		if (tiles.Count == puzzleSize.x * puzzleSize.y - 1)
 		{
-			GameObject.Destroy(transform.parent.parent.gameObject);
+            CharacterManager.Instance.Player.OnPuzzle(true);
+            Cursor.lockState = CursorLockMode.Locked;
+            GameObject.Destroy(transform.parent.parent.gameObject);
 		}
 	}
 }
