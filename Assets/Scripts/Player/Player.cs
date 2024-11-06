@@ -6,15 +6,22 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public PlayerController controller;
+    public PlayerCondition condition;
+    public Equipment equip;
+    
+
 
     public ItemData itemData;
     public Action addItem;
 
     public event Action<bool> onPuzzleEvent;
+    public Transform dropPosition;
 
     // Start is called before the first frame update
     void Awake()
     {
+        condition = GetComponent<PlayerCondition>();
+        equip = GetComponent<Equipment>();
         controller = GetComponent<PlayerController>();
         CharacterManager.Instance.Player = this;
     }

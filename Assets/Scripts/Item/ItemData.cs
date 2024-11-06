@@ -5,7 +5,7 @@ using UnityEngine;
 public enum ItemType
 {
     Readable,
-    Useable
+    Equipable
 }
 
 [CreateAssetMenu(fileName = "Item", menuName = "New Item")]
@@ -17,5 +17,8 @@ public class ItemData : ScriptableObject
     public ItemType type;
     public Sprite icon;
     public GameObject dropPrefab;
+
+    [Header("Equip")]
+    public GameObject equipPrefab;
 
 }
