@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public enum ElementType
 {
-    Terrain ,
+    Terrain,
     Prop,
     Puzzle,
     Trap
@@ -14,17 +14,19 @@ public enum ElementType
 //보여주는 부분을 분리 해주는 게 좋음. 
 
 
-
 public class EditorUI : MonoBehaviour
 {
     [SerializeField] private Transform elementButtonContainer;
     [SerializeField] private Button[] elementTypeButtons;
     [SerializeField] private Button playerPosButton;
     [SerializeField] private Button endPointButton;
-    private Button curButton;
+    [SerializeField] private Button undoButton;
+
     private List<GameObject> activeElementResourceButtons = new List<GameObject>();
     private MapType mapType;
 
+    private float buildNum; 
+    private float playerPosButtonActionNum;
 
     private void Start()
     {
@@ -34,22 +36,21 @@ public class EditorUI : MonoBehaviour
         SetElementButtonByType(0);
         InitButton();
     }
-    
- 
+
+
     private void InitButton()
     {
         for (int i = 0; i < elementTypeButtons.Length; i++)
         {
-            int index = i; 
+            int index = i;
             elementTypeButtons[i].onClick.AddListener(() => SetElementButtonByType(index));
         }
         
-        
         playerPosButton.onClick.AddListener(SetPlayerSpawnPosElement);
         endPointButton.onClick.AddListener(SetEndPointElement);
+        undoButton.onClick.AddListener(Undo);
     }
 
-    
 
     private void Activate()
     {
@@ -69,12 +70,13 @@ public class EditorUI : MonoBehaviour
         MapEditor.Instance.builder.CreateBuildElement($"Map/{MapEditor.Instance.generator.Type}/CustomGameEndPoint");
     }
 
-    
+    public void Undo()
+    {
+        MapEditor.Instance.builder.UndoBuild();
+    }
+
     public void SetElementButtonByType(int type)
     {
-
-         curButton = elementTypeButtons[type];
-        
         if (activeElementResourceButtons.Count != 0)
             ReturnButtonsToPool();
 
@@ -82,7 +84,7 @@ public class EditorUI : MonoBehaviour
         string defaultResourcePath = $"Map/{mapType}";
         string defaultIconPath = $"UI/{mapType}/{elementType.ToString()}";
 
-        Sprite[] iconFiles  = Resources.LoadAll<Sprite>(defaultIconPath);
+        Sprite[] iconFiles = Resources.LoadAll<Sprite>(defaultIconPath);
 
         foreach (var obj in iconFiles)
         {
@@ -90,7 +92,7 @@ public class EditorUI : MonoBehaviour
             Debug.Log(resourcePath);
             string iconPath = $"{defaultIconPath}/{obj.name}";
             GameObject resourceButton = ObjectPool.Instance.GetObject();
-            resourceButton.GetComponent<ResourceLoadButton>().Setting(resourcePath,iconPath);
+            resourceButton.GetComponent<ResourceLoadButton>().Setting(resourcePath, iconPath);
             resourceButton.transform.SetParent(elementButtonContainer.transform);
             activeElementResourceButtons.Add(resourceButton);
         }

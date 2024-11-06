@@ -21,7 +21,8 @@ public class Builder : MonoBehaviour
     private bool canBuild;
     private bool isSnapped = false;
 
-
+    public event Action OnBuild;
+    private Queue<GameObject> elementHistory = new Queue<GameObject>();
 
     private void Awake()
     {
@@ -69,11 +70,18 @@ public class Builder : MonoBehaviour
             Quaternion.identity, 
             MapEditor.Instance.mapContainer.transform  
         );
+        
+        elementHistory.Enqueue(obj);
+    }
+
+    public void UndoBuild()
+    {
+        if(elementHistory.Count > 0)
+            Destroy( elementHistory.Dequeue());
     }
 
     private IEnumerator MoveCurElement()
     {
-
         while (curElement != null)
         {
             Vector3 targetPosition = DetectNearElement();
