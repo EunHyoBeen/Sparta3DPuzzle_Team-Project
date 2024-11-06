@@ -9,7 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1f3fc2ab6b919e48822c68b8b75caca, type: 3}
+  m_Script: {fileID: 11500000, guid: 732b0365106e5f941ba5f337fecf1705, type: 3}
   m_Name: GrayKey
   m_EditorClassIdentifier: 
-  keyID: 3
+  displayName: Gray Key
+  description: "\uBB38\uC744 \uC5F4 \uC218 \uC788\uB294 \uC5F4\uC1E0\uC785\uB2C8\uB2E4."
+  type: 1
+  icon: {fileID: 21300000, guid: 8cd587923c846fc4d9caee652727a072, type: 3}
+  dropPrefab: {fileID: 4804112934807856596, guid: 7a3deb9219905384496434eeb3265258, type: 3}
+  equipPrefab: {fileID: 4804112934807856596, guid: 7a3deb9219905384496434eeb3265258, type: 3}

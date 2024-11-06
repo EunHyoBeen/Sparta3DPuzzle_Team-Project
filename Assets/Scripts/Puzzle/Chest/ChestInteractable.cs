@@ -6,7 +6,7 @@ public class ChestInteractable : PuzzleControllerBase, IInteractable
     private bool isOpen = false;
     public Lock chestLock;           // 자물쇠 참조 (null일 경우 자물쇠 없음)
     public Transform lidTransform;    // 상자 뚜껑 Transform
-    public float openAngle = 120f;
+    public float openAngle = -120f;
     public float openSpeed = 2f;
 
     private Quaternion closedRotation;
