@@ -1,21 +1,20 @@
-﻿using System;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class OneStrokePuzzleElement : MonoBehaviour, IPuzzleElement
+public class ChestPuzzleElement : MonoBehaviour, IPuzzleElement
 {
-
-    [SerializeField]private GameObject choicePuzzleTypeUI;
+    [SerializeField]private GameObject choicePreviousPuzzleTypeUI;
     [SerializeField] private TMP_InputField inputField;
     [SerializeField] private Button enrollButton;
-
-    private OneStrokeGrid strokeGrid;
+   
+    private ChestPuzzle chestPuzzle;
     private int puzzleType;
 
+    
     private void Awake()
     {
-        strokeGrid = GetComponent<OneStrokeGrid>();
+        chestPuzzle = GetComponent<ChestPuzzle>();
     }
 
     private void Start()
@@ -26,7 +25,7 @@ public class OneStrokePuzzleElement : MonoBehaviour, IPuzzleElement
 
     public void InitializePuzzleElement()
     {
-        choicePuzzleTypeUI.SetActive(true);
+        choicePreviousPuzzleTypeUI.SetActive(true);
     }
 
     public void EnrollPuzzleType()
@@ -35,8 +34,8 @@ public class OneStrokePuzzleElement : MonoBehaviour, IPuzzleElement
         if (1 <= puzzleType && puzzleType <= 10)
         {
             PuzzleType type = (PuzzleType)(puzzleType - 1);
-            strokeGrid.SetCurrentPuzzleType(type);
-            choicePuzzleTypeUI.SetActive(false);
+            chestPuzzle.SetPreviousPuzzleType(type);
+            choicePreviousPuzzleTypeUI.SetActive(false);
             return;
         }
 
