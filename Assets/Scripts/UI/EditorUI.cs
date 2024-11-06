@@ -59,13 +59,11 @@ public class EditorUI : MonoBehaviour
 
     public void SetPlayerSpawnPosElement()
     {
-        playerPosButton.interactable = false;
         MapEditor.Instance.builder.CreateBuildElement($"Map/{MapEditor.Instance.generator.Type}/PlayerPosIndicator");
     }
 
     public void SetEndPointElement()
     {
-        endPointButton.interactable = false;
         MapEditor.Instance.builder.CreateBuildElement($"Map/{MapEditor.Instance.generator.Type}/CustomGameEndPoint");
     }
 

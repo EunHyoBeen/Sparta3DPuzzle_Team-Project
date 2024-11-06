@@ -21,7 +21,6 @@ public class Builder : MonoBehaviour
     private bool canBuild;
     private bool isSnapped = false;
 
-    public event Action OnBuild;
     private Queue<GameObject> elementHistory = new Queue<GameObject>();
     private GameObject curPlayerPos;
     private GameObject curEndPoint;
@@ -41,16 +40,14 @@ public class Builder : MonoBehaviour
     {
         DeleteBuildElement();
         curElementResourcePath = path;
-        Debug.Log(curElementResourcePath);
-
         GameObject obj = Instantiate(Resources.Load<GameObject>(curElementResourcePath));
         obj.AddComponent<Rigidbody>().isKinematic = true;
         obj.GetComponentInChildren<Collider>().isTrigger = true;
         curElement = obj.AddComponent<BuildableElement>();
  
-        if (obj.layer == LayerMask.NameToLayer("Terrain"))
-                curElement.SetTerrain();
-        
+        SetElementByLayer(obj);
+
+
         obj.layer = 0;
         obj.transform.GetChild(0).gameObject.layer = 0;
 
@@ -58,6 +55,20 @@ public class Builder : MonoBehaviour
         StartCoroutine(MoveCurElement());
     }
 
+    
+    private void SetElementByLayer(GameObject obj)
+    {
+        if (obj.layer == LayerMask.NameToLayer("Terrain"))
+            curElement.SetTerrain();
+        
+        if(obj.layer == LayerMask.NameToLayer("EndPoint"))
+            curElement.SetEndPoint();
+        
+        if(obj.layer == LayerMask.NameToLayer("PlayerPos"))
+            curElement.SetPlayerPos();
+    }
+
+    
     public void DeleteBuildElement()
     {
         if(curElement !=null)
@@ -75,17 +86,45 @@ public class Builder : MonoBehaviour
             MapEditor.Instance.mapContainer.transform  
         );
 
-        IsUniqueElement(obj);
+        AssignPlayerPosElement(obj);
+        AssignEndPointElement(obj);
 
         elementHistory.Enqueue(obj);
         
     }
 
-    private void IsUniqueElement(GameObject obj)
+    private void AssignPlayerPosElement(GameObject obj)
     {
-        if (curPlayerPos == null || curEndPoint ==null)
+        if(!curElement.isPlayerPos)
+            return;
+
+        if (curPlayerPos == null)
         {
-         }
+            curPlayerPos = obj;
+            return;
+        }
+
+        
+        Destroy(curPlayerPos);
+        curPlayerPos = obj;
+
+    }
+
+    private void AssignEndPointElement(GameObject obj)
+    {
+        Debug.Log("asdas"+curElement.isEndPoint);
+        
+        if(!curElement.isEndPoint)
+            return;
+
+        if (curEndPoint == null)
+        {
+            curEndPoint = obj;
+            return;
+        }
+        
+        Destroy(curEndPoint);
+        curEndPoint = obj;
     }
 
     public void UndoBuild()

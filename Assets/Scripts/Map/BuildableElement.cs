@@ -17,11 +17,23 @@ public class BuildableElement : MonoBehaviour
     private Collider[] hitColliders = new Collider[10];
 
     public bool isTerrain { get; private set; }
+    public bool isPlayerPos { get; private set; }
+    public bool isEndPoint { get; private set; }
     public bool CanBuild { get; private set; }
 
     public void SetTerrain()
     {
         isTerrain = true;
+    }
+
+    public void SetPlayerPos()
+    {
+        isPlayerPos = true;
+    }
+
+    public void SetEndPoint()
+    {
+        isEndPoint = true;
     }
 
     private void Awake()
