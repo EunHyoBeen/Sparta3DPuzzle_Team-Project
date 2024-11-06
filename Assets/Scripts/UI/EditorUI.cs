@@ -29,7 +29,7 @@ public class EditorUI : MonoBehaviour
     private void Start()
     {
         gameObject.SetActive(false);
-        MapEditor.Instance.generator.OnGenerateDefaultMap += Activate;
+        MapEditor.Instance.generator.OnGenerateMap += Activate;
         mapType = MapEditor.Instance.generator.Type;
         SetElementButtonByType(0);
         InitButton();

@@ -25,6 +25,7 @@ public class Builder : MonoBehaviour
     private GameObject curPlayerPos;
     private GameObject curEndPoint;
     
+    
     private void Awake()
     {
         controller = GetComponent<MapEditInputController>();

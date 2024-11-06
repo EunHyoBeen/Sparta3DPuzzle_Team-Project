@@ -26,7 +26,7 @@ public class MapDataManager : DestroySingleton<MapDataManager>
         if(mapContainer == null)
             return;
  
-        filePath = Application.dataPath  + $"/MapData/MapData_{mapName}.json";
+        filePath = Application.dataPath  +  $"/MapData/{mapName}.json";
         
         mapData.Clear();
         for (int i = 0; i <mapContainer.transform.childCount; i++)
@@ -63,9 +63,9 @@ public class MapDataManager : DestroySingleton<MapDataManager>
         Debug.Log($"맵 데이터가 저장 됐습니다: '{mapName}' 경로: {filePath}");
     }
 
-     public List<MapElement> LoadMapData()
+     public List<MapElement> LoadMapData(string mapDataName)
     {
-        filePath = Path.Combine(Application.dataPath, $"MapData/MapData_Dd.json");
+        filePath = Path.Combine(Application.dataPath, $"MapData/{mapDataName}.json");
         
         if (!File.Exists(filePath))
         {
@@ -79,10 +79,9 @@ public class MapDataManager : DestroySingleton<MapDataManager>
         return loadedElementContainer != null ? loadedElementContainer.elements : new List<MapElement>();
     }
 
-    [ContextMenu("맵생성")]
-     public void CreateMap()
+      public void CreateMap(string mapDataName)
     {
-        MapEditor.Instance.generator.GenerateByMapData(LoadMapData());
+        MapEditor.Instance.generator.GenerateByMapData(LoadMapData(mapDataName));
     }
 }
 

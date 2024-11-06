@@ -18,7 +18,7 @@ public class MapGenerator : MonoBehaviour
     {
     }
 
-    public event Action OnGenerateDefaultMap;
+    public event Action OnGenerateMap;
 
 
     [ContextMenu("맵삭제")]
@@ -56,7 +56,7 @@ public class MapGenerator : MonoBehaviour
             }
         }
 
-        OnGenerateDefaultMap?.Invoke();
+        OnGenerateMap?.Invoke();
     }
 
     public void GenerateByMapData(List<MapElement> mapData)
@@ -88,6 +88,8 @@ public class MapGenerator : MonoBehaviour
             }
 
         }
+        
+        OnGenerateMap?.Invoke();
     }
 
     
