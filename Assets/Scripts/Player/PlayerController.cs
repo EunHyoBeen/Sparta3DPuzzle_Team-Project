@@ -178,4 +178,9 @@ public class PlayerController : MonoBehaviour
         isRunning = false;
         moveSpeed = 2;
     }
+
+    private void OnDestroy()
+    {
+        Cursor.lockState = CursorLockMode.None;
+    }
 }

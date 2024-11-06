@@ -245,6 +245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapDataLoadButtonContainer: {fileID: 882138169}
+  quitButton: {fileID: 2088207538}
 --- !u!1 &375057351
 GameObject:
   m_ObjectHideFlags: 0
@@ -942,7 +943,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -396.29, y: 324.99924}
+  m_AnchoredPosition: {x: -396.29, y: 324.99927}
   m_SizeDelta: {x: 780, y: 800}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1174293806
@@ -1119,7 +1120,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 61595964}
   m_HandleRect: {fileID: 61595963}
   m_Direction: 2
-  m_Value: 1.0000052
+  m_Value: 1.0000049
   m_Size: 0.8125
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1929,6 +1930,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   snapDistance: 1
   snapSpeed: 30
+  elementRotateAmount: 5
 --- !u!114 &2065872959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2066,6 +2068,14 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 64571217-f7f6-467d-a1a8-5dca47274e98
     m_ActionName: MapEditor/OnMove[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1c27831a-2bac-49b6-b92c-f60c3dc2b681
+    m_ActionName: MapEditor/OnRotateQButton[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8af0bdda-2d9f-491b-a4a3-236a4ea200ef
+    m_ActionName: MapEditor/OnRotateEButton[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: MapEditor
@@ -2139,7 +2149,7 @@ GameObject:
   - component: {fileID: 2088207539}
   - component: {fileID: 2088207538}
   m_Layer: 0
-  m_Name: ExitButton
+  m_Name: QuitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

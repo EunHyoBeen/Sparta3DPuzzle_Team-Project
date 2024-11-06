@@ -1,17 +1,24 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+
 using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayCustomGameUI : MonoBehaviour
 {
     [SerializeField] private Transform mapDataLoadButtonContainer;
+    [SerializeField] private Button quitButton;
     
     private void Start()
     {
         MapEditor.Instance.generator.OnGenerateMap += HideUI;
+        quitButton.onClick.AddListener(OnQuit);
         SetMapDataLoadButton();
+    }
+
+
+    private void OnQuit()
+    {
+        FadeManager.Instance.LoadScene("StartScene");
     }
 
     private void HideUI()

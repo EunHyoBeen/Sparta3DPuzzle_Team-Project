@@ -8,8 +8,8 @@ public class Builder : MonoBehaviour
 {
     
     [SerializeField]float snapDistance = 0.1f; 
-    [SerializeField]float snapSpeed = 30f; 
-    
+    [SerializeField]float snapSpeed = 30f;
+    [SerializeField] private float elementRotateAmount = 5f;
     private BuildableElement curElement;
     private MapEditInputController controller;
     private MapGenerator  generator;
@@ -26,6 +26,7 @@ public class Builder : MonoBehaviour
     private GameObject curEndPoint;
     
     
+    
     private void Awake()
     {
         controller = GetComponent<MapEditInputController>();
@@ -35,9 +36,22 @@ public class Builder : MonoBehaviour
     {
         controller.OnLeftButtonEvent += TryBuildElement;
         controller.OnRightButtonEvent += DeleteBuildElement;
+        controller.OnRotateQButtonEvent += RotateLeftOnYAxis;
+        controller.OnRotateEButtonEvent += RotateRightOnYAxis;
     }
 
- 
+    private void RotateLeftOnYAxis()
+    {
+        if (curElement != null)
+            curElement.transform.localRotation = Quaternion.Euler(0, curElement.transform.localRotation.eulerAngles.y - elementRotateAmount, 0);
+    }
+
+    private void RotateRightOnYAxis()
+    {
+        if (curElement != null)
+            curElement.transform.localRotation = Quaternion.Euler(0, curElement.transform.localRotation.eulerAngles.y + elementRotateAmount, 0);
+    }
+
     public void CreateBuildElement(string path)
     {
         DeleteBuildElement();
@@ -139,7 +153,8 @@ public class Builder : MonoBehaviour
     private IEnumerator MoveCurElement()
     {
         while (curElement != null)
-        {
+        {   
+            
             Vector3 targetPosition = DetectNearElement();
 
              float distance = Vector3.Distance(curElement.transform.position, targetPosition);
