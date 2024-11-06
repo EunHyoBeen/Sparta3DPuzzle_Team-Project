@@ -139,6 +139,10 @@ PrefabInstance:
       propertyPath: damageRate
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 2513448604551445607, guid: 013f9d1069ff49e4780c0ab03a546543, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2550397269192237423, guid: 013f9d1069ff49e4780c0ab03a546543, type: 3}
       propertyPath: m_Radius
       value: 1.15
@@ -146,6 +150,18 @@ PrefabInstance:
     - target: {fileID: 2688509231434843697, guid: 013f9d1069ff49e4780c0ab03a546543, type: 3}
       propertyPath: damageRate
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3881883403217133077, guid: 013f9d1069ff49e4780c0ab03a546543, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4173065064402858398, guid: 013f9d1069ff49e4780c0ab03a546543, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544845649949174934, guid: 013f9d1069ff49e4780c0ab03a546543, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 4951683100029090605, guid: 013f9d1069ff49e4780c0ab03a546543, type: 3}
       propertyPath: stageName
@@ -219,6 +235,10 @@ PrefabInstance:
       propertyPath: pannelCenter
       value: 
       objectReference: {fileID: 2051347993}
+    - target: {fileID: 8505248623322189245, guid: 013f9d1069ff49e4780c0ab03a546543, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8917700337275883884, guid: 013f9d1069ff49e4780c0ab03a546543, type: 3}
       propertyPath: m_Radius
       value: 1.15
