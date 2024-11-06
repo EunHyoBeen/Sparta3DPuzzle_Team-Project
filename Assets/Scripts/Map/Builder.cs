@@ -20,7 +20,8 @@ public class Builder : MonoBehaviour
     private Vector3 curSnapPos;
     private bool canBuild;
     private bool isSnapped = false;
-    
+
+
 
     private void Awake()
     {
@@ -32,23 +33,18 @@ public class Builder : MonoBehaviour
         controller.OnLeftButtonEvent += TryBuildElement;
     }
 
-
-     public void CreateBuildElement(string path)
+ 
+    public void CreateBuildElement(string path)
     {
         DeleteBuildElement();
         curElementResourcePath = path;
-        Debug.Log(path);
         GameObject obj = Instantiate(Resources.Load<GameObject>(curElementResourcePath));
-        obj.AddComponent<Rigidbody>().freezeRotation = true;
-        obj.GetComponent<Rigidbody>().isKinematic = true;
+        obj.AddComponent<Rigidbody>().isKinematic = true;
         obj.GetComponentInChildren<Collider>().isTrigger = true;
         curElement = obj.AddComponent<BuildableElement>();
-
  
         if (obj.layer == LayerMask.NameToLayer("Terrain"))
                 curElement.SetTerrain();
-        
-        
         
         obj.layer = 0;
         obj.transform.GetChild(0).gameObject.layer = 0;
@@ -84,17 +80,17 @@ public class Builder : MonoBehaviour
 
              float distance = Vector3.Distance(curElement.transform.position, targetPosition);
 
-
             if (distance < snapDistance && isSnapped)
             {
-                 curElement.transform.position = Vector3.MoveTowards(curElement.transform.position, targetPosition, snapSpeed * Time.deltaTime);
+                 curElement.transform.position = Vector3.MoveTowards(curElement.transform.position,
+                     targetPosition, snapSpeed * Time.deltaTime);
             }
             else
             {
                  curElement.transform.position = targetPosition;
             }
 
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
     }
     
@@ -110,7 +106,6 @@ public class Builder : MonoBehaviour
             isSnapped = true;
             if (curElement.isTerrain == true)
             {
-                Debug.Log("지형입니다");
                 return CalculateTerrainPosition(hit);
             }
 
@@ -138,8 +133,8 @@ public class Builder : MonoBehaviour
             return;
 
         StopCoroutine(MoveCurElement());
-
         Build();
         DeleteBuildElement();
+        
     }
 }

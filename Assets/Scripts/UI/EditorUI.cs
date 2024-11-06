@@ -10,6 +10,11 @@ public enum ElementType
     Trap
 }
 
+//UI를 처리해 주는 부분과
+//보여주는 부분을 분리 해주는 게 좋음. 
+
+
+
 public class EditorUI : MonoBehaviour
 {
     [SerializeField] private Transform elementButtonContainer;
@@ -26,10 +31,9 @@ public class EditorUI : MonoBehaviour
         gameObject.SetActive(false);
         MapEditor.Instance.generator.OnGenerateDefaultMap += Activate;
         mapType = MapEditor.Instance.generator.Type;
-        SetElementButtonByType(3);
+        SetElementButtonByType(0);
         InitButton();
     }
- 
     
  
     private void InitButton()
