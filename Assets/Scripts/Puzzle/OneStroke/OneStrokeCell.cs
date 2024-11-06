@@ -4,13 +4,13 @@ public class OneStrokeCell : MonoBehaviour
 {
     public bool isVisited = false;
 
-    // »ö»ó ¼³Á¤
-    public Color visitedColor = Color.green; // ¹æ¹®ÇÑ ¼¿ÀÇ »ö»ó
-    private Color originalColor; // ¿ø·¡ »ö»ó
+    // ìƒ‰ìƒ ì„¤ì •
+    public Color visitedColor = Color.green; // ë°©ë¬¸í•œ ì…€ì˜ ìƒ‰ìƒ
+    private Color originalColor; // ì›ë˜ ìƒ‰ìƒ
 
-    private Renderer cellRenderer; // Renderer ÄÄÆ÷³ÍÆ®¸¦ ÀúÀåÇÒ º¯¼ö
+    private Renderer cellRenderer; // Renderer ì»´í¬ë„ŒíŠ¸ë¥¼ ì €ì¥í•  ë³€ìˆ˜
 
-    // ¼¿ÀÇ »ó, ÇÏ, ÁÂ, ¿ì ¼¿ ÂüÁ¶
+    // ì…€ì˜ ìƒ, í•˜, ì¢Œ, ìš° ì…€ ì°¸ì¡°
     public OneStrokeCell topCell;
     public OneStrokeCell bottomCell;
     public OneStrokeCell leftCell;
@@ -18,11 +18,11 @@ public class OneStrokeCell : MonoBehaviour
 
     private void Start()
     {
-        // ÃÊ±â »ö»óÀ» ÀúÀåÇÏ°í Renderer °¡Á®¿À±â
+        // ì´ˆê¸° ìƒ‰ìƒì„ ì €ì¥í•˜ê³  Renderer ê°€ì ¸ì˜¤ê¸°
         cellRenderer = GetComponent<Renderer>();
         if (cellRenderer != null)
         {
-            originalColor = cellRenderer.material.color; // ¿ø·¡ »ö»ó ÀúÀå
+            originalColor = cellRenderer.material.color; // ì›ë˜ ìƒ‰ìƒ ì €ì¥
         }
     }
 
@@ -32,7 +32,7 @@ public class OneStrokeCell : MonoBehaviour
 
         isVisited = true;
 
-        // »ö»ó º¯°æ
+        // ìƒ‰ìƒ ë³€ê²½
         ChangeColor(visitedColor);
         return true;
     }
@@ -41,7 +41,7 @@ public class OneStrokeCell : MonoBehaviour
     {
         isVisited = false;
 
-        // »ö»ó º¹¿ø
+        // ìƒ‰ìƒ ë³µì›
         ChangeColor(originalColor);
     }
 
@@ -49,7 +49,7 @@ public class OneStrokeCell : MonoBehaviour
     {
         if (cellRenderer != null)
         {
-            cellRenderer.material.color = newColor; // »ö»ó º¯°æ
+            cellRenderer.material.color = newColor; // ìƒ‰ìƒ ë³€ê²½
         }
     }
 }

@@ -219,6 +219,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   teleportCooldown: 100000
+  rotatePlayerY: 180
 --- !u!1001 &1432387409
 PrefabInstance:
   m_ObjectHideFlags: 0
