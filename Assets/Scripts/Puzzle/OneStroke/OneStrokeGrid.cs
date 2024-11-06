@@ -11,6 +11,8 @@ public class OneStrokeGrid : PuzzleControllerBase, IInteractable
     public Camera mainCamera; // ���� ī�޶�
     public Camera puzzleCamera; // ���� ���� ī�޶�
 
+    [SerializeField] Transform pannelCenter;
+        
     private OneStrokeCell[,] grid;
     private OneStrokeCell previousCell = null;  // ������ �湮�� ���� ����
     private Vector3 cellScale; // ������ ������ ����
@@ -27,21 +29,26 @@ public class OneStrokeGrid : PuzzleControllerBase, IInteractable
         puzzleCamera.gameObject.SetActive(false);
     }
 
-    public void SetCurrentPuzzleType(PuzzleType type)
-    {
-        currentPuzzleType = type;
-    }
+
 
     private void GenerateGrid()
     {
         grid = new OneStrokeCell[rows, columns];
+    
+        int remainCount = rows / 2;
+    
+        Vector3 pivotPos = pannelCenter.localPosition;
+        pivotPos.x += (pannelCenter.localScale.x / 2);
+        pivotPos.y -= (remainCount * cellScale.y);
+        pivotPos.z -= (remainCount * cellScale.z);
+    
         for (int i = 0; i < rows; i++)
         {
             for (int j = 0; j < columns; j++)
             {
                 GameObject cellObject = Instantiate(cellPrefab, generatorTransform);
                 cellObject.transform.localScale = cellScale;
-                cellObject.transform.localPosition = new Vector3(0, i * cellScale.y, j * cellScale.z);
+                cellObject.transform.localPosition = pivotPos + new Vector3(0, i * cellScale.y, j * cellScale.z);
                 grid[i, j] = cellObject.GetComponent<OneStrokeCell>();
             }
         }
@@ -64,7 +71,6 @@ public class OneStrokeGrid : PuzzleControllerBase, IInteractable
         Destroy(grid[4, 2].gameObject);
         Destroy(grid[1, 3].gameObject);
     }
-
     public string GetInteractPrompt()
     {
         if (isClear) return "�̹� Ŭ������ �����Դϴ�";

@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class UIInventory : MonoBehaviour
 {
     public ItemSlot[] slots;
-
     public GameObject inventoryWindow;
     public Transform slotPanel;
     public Transform dropPosition;

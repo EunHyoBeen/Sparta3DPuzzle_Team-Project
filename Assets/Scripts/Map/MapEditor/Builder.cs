@@ -88,12 +88,11 @@ public class Builder : MonoBehaviour
         AssignPlayerPosElement(obj);
         AssignEndPointElement(obj);
         
-        if(obj.TryGetComponent<PuzzleElement>(out PuzzleElement puzzleElement))
-        {
-            Debug.Log("퍼즐 요소입니다.");
-            puzzleElement.InitializePuzzleElement();
-        }
-
+       
+         if(obj.TryGetComponent<IPuzzleElement>(out IPuzzleElement puzzleElement))
+         {
+             puzzleElement.InitializePuzzleElement();
+         }
         elementHistory.Push(obj);
     }
 
@@ -116,7 +115,6 @@ public class Builder : MonoBehaviour
 
     private void AssignEndPointElement(GameObject obj)
     {
-        Debug.Log("asdas"+curElement.isEndPoint);
         
         if(!curElement.isEndPoint)
             return;

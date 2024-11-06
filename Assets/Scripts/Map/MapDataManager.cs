@@ -32,13 +32,30 @@ public class MapDataManager : DestroySingleton<MapDataManager>
         for (int i = 0; i <mapContainer.transform.childCount; i++)
         {
             var child = mapContainer.transform.GetChild(i);
-            MapElement newMapData = new MapElement(
-                child.name,
-                child.position,
-                child.rotation,
-                child.localScale
-            );
-            mapData.Add(newMapData);
+
+            if (child.TryGetComponent<PuzzleControllerBase>(out PuzzleControllerBase type))
+            {
+                MapElement newMapData = new MapElement(
+                    child.name,
+                    child.position,
+                    child.rotation,
+                    child.localScale,
+                    type.CurrentPuzzleType
+                 );
+                mapData.Add(newMapData);
+            }
+
+            else
+            {
+                MapElement newMapData = new MapElement(
+                    child.name,
+                    child.position,
+                    child.rotation,
+                    child.localScale
+                );
+                mapData.Add(newMapData);
+            }
+      
         }
 
         string jsonData = JsonUtility.ToJson(new MapElementContainer(mapData), true);
@@ -48,7 +65,7 @@ public class MapDataManager : DestroySingleton<MapDataManager>
 
      public List<MapElement> LoadMapData()
     {
-        filePath = Path.Combine(Application.dataPath, $"MapData/MapData_jjy.json");
+        filePath = Path.Combine(Application.dataPath, $"MapData/MapData_Dd.json");
         
         if (!File.Exists(filePath))
         {
@@ -62,7 +79,7 @@ public class MapDataManager : DestroySingleton<MapDataManager>
         return loadedElementContainer != null ? loadedElementContainer.elements : new List<MapElement>();
     }
 
-    
+    [ContextMenu("맵생성")]
      public void CreateMap()
     {
         MapEditor.Instance.generator.GenerateByMapData(LoadMapData());

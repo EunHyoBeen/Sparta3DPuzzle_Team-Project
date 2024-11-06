@@ -82,6 +82,11 @@ public class MapGenerator : MonoBehaviour
             obj.transform.position = element.position;
             obj.transform.rotation = element.rotation;
             obj.transform.localScale = element.localScale;
+            if (obj.TryGetComponent<PuzzleControllerBase>(out PuzzleControllerBase type))
+            {
+                type.SetCurrentPuzzleType(element.type);
+            }
+
         }
     }
 

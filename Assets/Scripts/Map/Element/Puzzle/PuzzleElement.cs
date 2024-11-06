@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-public abstract class PuzzleElement : MonoBehaviour
+public interface  IPuzzleElement 
 {
     public abstract void InitializePuzzleElement();
 }
