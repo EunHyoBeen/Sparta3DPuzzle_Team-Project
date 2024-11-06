@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -32,7 +33,6 @@ public class UIInventory : MonoBehaviour
         dropPosition = CharacterManager.Instance.Player.dropPosition;
 
         controller.inventory += Toggle;
-        CharacterManager.Instance.Player.addItem += AddItem;
 
         inventoryWindow.SetActive(false);
         slots = new ItemSlot[slotPanel.childCount];
@@ -73,10 +73,8 @@ public class UIInventory : MonoBehaviour
         return inventoryWindow.activeInHierarchy;
     }
     
-    void AddItem()
+    public void AddItem(ItemData data)
     {
-        ItemData data = CharacterManager.Instance.Player.itemData;
-
         ItemSlot emptySlot = GetEmptySlot();
 
         if(emptySlot != null)
@@ -84,13 +82,10 @@ public class UIInventory : MonoBehaviour
             emptySlot.item = data;
             emptySlot.quantity = 1;
             UpdateUI();
-            CharacterManager.Instance.Player.itemData = null;
             return;
         }
 
         ThrowItem(data);
-
-        CharacterManager.Instance.Player.itemData = null;
     }
 
     void UpdateUI()

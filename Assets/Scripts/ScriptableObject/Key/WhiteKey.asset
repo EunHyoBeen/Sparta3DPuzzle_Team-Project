@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 732b0365106e5f941ba5f337fecf1705, type: 3}
-  m_Name: YellowKey
+  m_Name: WhiteKey
   m_EditorClassIdentifier: 
-  displayName: Yellow Key
-  description: "\uB178\uB780\uC0C9 \uC790\uBB3C\uC1E0\uB97C \uC5F4 \uC218 \uC788\uB294
+  displayName: White Key
+  description: "\uAC08\uC0C9 \uC790\uBB3C\uC1E0\uB97C \uC5F4 \uC218 \uC788\uB294
     \uC5F4\uC1E0\uC785\uB2C8\uB2E4."
   type: 1
-  icon: {fileID: 21300000, guid: bc485ae7e9b23604c85a7444d31c309a, type: 3}
-  dropPrefab: {fileID: 2905599053971990992, guid: bdc6c57edec244a15a71361b5c2a8c4a, type: 3}
-  equipPrefab: {fileID: 2905599053971990992, guid: bdc6c57edec244a15a71361b5c2a8c4a, type: 3}
+  icon: {fileID: 21300000, guid: 1c6d40fb0c1defe42932066c9fbaa702, type: 3}
+  dropPrefab: {fileID: 8829837453391720766, guid: 728136093dc5441a9ae91750aea83aea, type: 3}
+  equipPrefab: {fileID: 8829837453391720766, guid: 728136093dc5441a9ae91750aea83aea, type: 3}

@@ -9,8 +9,7 @@ public class Player : MonoBehaviour
     public PlayerCondition condition;
     public Equipment equip;  
 
-
-    public ItemData itemData;
+    public UIInventory inventory;
     public Action addItem;
 
     public event Action<bool> onPuzzleEvent;

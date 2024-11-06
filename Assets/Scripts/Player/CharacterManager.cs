@@ -12,8 +12,7 @@ public class CharacterManager : MonoBehaviour
         {
             if(instance == null)
             {
-                instance = new GameObject("CharacterManager").AddComponent<CharacterManager>();
-                
+                instance = new GameObject("CharacterManager").AddComponent<CharacterManager>();                
             }
             return instance;
         }
