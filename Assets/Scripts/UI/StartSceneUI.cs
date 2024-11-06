@@ -56,17 +56,17 @@ public class StartSceneUI : MonoBehaviour
     public void OnReStartButton()
     {
         DataManager.Instance.SetTopScene("Stage1");
-        SceneManager.LoadScene("Stage1");
+        FadeManager.Instance.LoadScene("Stage1");
     }
 
     public void OnEditMapButton()
     {
-        SceneManager.LoadScene("EditMapScene");
+        FadeManager.Instance.LoadScene("EditMapScene");
     }
     
     public void OnPlayCustomMapButton()
     {
-        SceneManager.LoadScene("PlayCustomGameScene");
+        FadeManager.Instance.LoadScene("PlayCustomGameScene");
     }
 
 }

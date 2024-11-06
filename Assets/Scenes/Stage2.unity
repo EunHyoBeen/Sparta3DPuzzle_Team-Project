@@ -151,6 +151,10 @@ PrefabInstance:
       propertyPath: damageRate
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 2750344603769245056, guid: 013f9d1069ff49e4780c0ab03a546543, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3881883403217133077, guid: 013f9d1069ff49e4780c0ab03a546543, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.6

@@ -296,7 +296,7 @@ MonoBehaviour:
   controller: {fileID: 0}
   condition: {fileID: 0}
   equip: {fileID: 0}
-  inventory: {fileID: 0}
+  inventory: {fileID: 1165309933309513506}
   dropPosition: {fileID: 5763596462474103503}
 --- !u!114 &3585049884456139988
 MonoBehaviour:
@@ -315,7 +315,7 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 6144
-  useStamina: 0
+  useStamina: 1
   cameraContainer: {fileID: 9156224291686969936}
   minXRot: -85
   maxXRot: 85
@@ -554,6 +554,17 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1165309933309513506 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 773613452253505999, guid: bfd5eaf051ea70c4ca50ca6a641b83ea, type: 3}
+  m_PrefabInstance: {fileID: 1914151216656246509}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d4621e91fbed7443b5c4aa599090be8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2386823484010080738 stripped
