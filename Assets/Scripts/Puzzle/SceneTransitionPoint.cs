@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneTransitionPoint : EndPoint
 {
+    [SerializeField] private string stageName;
     private int nextSceneIndex; 
 
     private void Start()
@@ -19,6 +20,7 @@ public class SceneTransitionPoint : EndPoint
 
     protected override void HandleLevelComplete()
     {
-        Debug.Log("클리어");
+        DataManager.Instance.SetTopScene(stageName);
+        DataManager.Instance.LoadTopScene();
     }
 }
