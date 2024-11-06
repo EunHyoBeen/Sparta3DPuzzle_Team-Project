@@ -25,8 +25,6 @@ public class EditorUI : MonoBehaviour
     private List<GameObject> activeElementResourceButtons = new List<GameObject>();
     private MapType mapType;
 
-    private float buildNum; 
-    private float playerPosButtonActionNum;
 
     private void Start()
     {
@@ -36,6 +34,7 @@ public class EditorUI : MonoBehaviour
         SetElementButtonByType(0);
         InitButton();
     }
+
 
 
     private void InitButton()

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 824197629738231866}
   - component: {fileID: 873710917011543936}
   - component: {fileID: 2755035669209166685}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: PlayerPosIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6185766318763953212}
   - component: {fileID: 8965872982618248352}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: PlayerPosIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -23,7 +23,9 @@ public class Builder : MonoBehaviour
 
     public event Action OnBuild;
     private Queue<GameObject> elementHistory = new Queue<GameObject>();
-
+    private GameObject curPlayerPos;
+    private GameObject curEndPoint;
+    
     private void Awake()
     {
         controller = GetComponent<MapEditInputController>();
@@ -39,6 +41,8 @@ public class Builder : MonoBehaviour
     {
         DeleteBuildElement();
         curElementResourcePath = path;
+        Debug.Log(curElementResourcePath);
+
         GameObject obj = Instantiate(Resources.Load<GameObject>(curElementResourcePath));
         obj.AddComponent<Rigidbody>().isKinematic = true;
         obj.GetComponentInChildren<Collider>().isTrigger = true;
@@ -70,8 +74,18 @@ public class Builder : MonoBehaviour
             Quaternion.identity, 
             MapEditor.Instance.mapContainer.transform  
         );
-        
+
+        IsUniqueElement(obj);
+
         elementHistory.Enqueue(obj);
+        
+    }
+
+    private void IsUniqueElement(GameObject obj)
+    {
+        if (curPlayerPos == null || curEndPoint ==null)
+        {
+         }
     }
 
     public void UndoBuild()
@@ -143,6 +157,6 @@ public class Builder : MonoBehaviour
         StopCoroutine(MoveCurElement());
         Build();
         DeleteBuildElement();
-        
+        CreateBuildElement(curElementResourcePath);
     }
 }

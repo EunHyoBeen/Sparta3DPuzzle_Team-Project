@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7588533675573672280}
   - component: {fileID: 2442999446374716103}
   - component: {fileID: 2118053141799177809}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: CustomGameEndPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,6 +118,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e17882d12f3592c45bd1d52169c8d727, type: 3}
       propertyPath: m_Name
       value: flag_teamRed
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e17882d12f3592c45bd1d52169c8d727, type: 3}
+      propertyPath: m_Layer
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

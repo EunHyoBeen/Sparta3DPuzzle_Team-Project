@@ -21,8 +21,8 @@ TagManager:
   - Terrain
   - Prop
   - Trap
-  - 
-  - 
+  - PlayerPos
+  - EndPoint
   - 
   - 
   - 
