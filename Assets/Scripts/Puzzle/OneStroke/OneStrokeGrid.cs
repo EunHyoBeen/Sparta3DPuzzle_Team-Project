@@ -10,7 +10,6 @@ public class OneStrokeGrid : PuzzleControllerBase, IInteractable
     public Transform generatorTransform; // 퍼즐 생성 위치 (부모 오브젝트)
     public Camera mainCamera; // 메인 카메라
     public Camera puzzleCamera; // 퍼즐 전용 카메라
-    public Rigidbody playerRb; // 플레이어 Rigidbody 추가
 
     private OneStrokeCell[,] grid;
     private OneStrokeCell previousCell = null;  // 이전에 방문한 셀을 저장
@@ -20,6 +19,7 @@ public class OneStrokeGrid : PuzzleControllerBase, IInteractable
 
     private void Start()
     {
+        mainCamera = Camera.main;
         cellScale = cellPrefab.transform.localScale;
         GenerateGrid();
 
