@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 curMoveInput;
     public int jumpForce;
     public LayerMask groundLayerMask;
+    private bool isRunning;
+    public float useStamina;
 
     [Header("Look")]
     public Transform cameraContainer;
@@ -46,6 +48,9 @@ public class PlayerController : MonoBehaviour
     {
         if(canControl)
             Move();
+
+        if (isRunning)
+            Run();
     }
 
     private void LateUpdate()
@@ -140,5 +145,37 @@ public class PlayerController : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public void OnRun(InputAction.CallbackContext context)
+    {
+        if(context.phase == InputActionPhase.Performed)
+        {
+            if (CharacterManager.Instance.Player.condition.UseStamina(useStamina))
+            {
+                Run();
+            }
+        }
+        else if(context.phase == InputActionPhase.Canceled)
+        {
+            RunCancel();
+        }
+    }
+
+    public void Run()
+    {
+        if (CharacterManager.Instance.Player.condition.UseStamina(useStamina))
+        {
+            isRunning = true;
+            moveSpeed = 4;
+        }
+        else
+            RunCancel();
+    }
+
+    public void RunCancel()
+    {
+        isRunning = false;
+        moveSpeed = 2;
     }
 }
