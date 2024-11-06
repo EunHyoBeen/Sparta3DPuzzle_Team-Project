@@ -35,7 +35,6 @@ public class PlayerCondition : MonoBehaviour , IDamageable
 
     public void TakePhysicalDamage(int damage)
     {
-        Debug.Log(damage);
         health.Subtract(damage);
         onTakeDamage?.Invoke();
     }
