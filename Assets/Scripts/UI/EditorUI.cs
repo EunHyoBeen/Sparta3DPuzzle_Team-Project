@@ -86,8 +86,7 @@ public class EditorUI : MonoBehaviour
         foreach (var obj in iconFiles)
         {
             string resourcePath = $"{defaultResourcePath}/{obj.name}";
-            Debug.Log(resourcePath);
-            string iconPath = $"{defaultIconPath}/{obj.name}";
+             string iconPath = $"{defaultIconPath}/{obj.name}";
             GameObject resourceButton = ObjectPool.Instance.GetObject();
             resourceButton.GetComponent<ResourceLoadButton>().Setting(resourcePath, iconPath);
             resourceButton.transform.SetParent(elementButtonContainer.transform);

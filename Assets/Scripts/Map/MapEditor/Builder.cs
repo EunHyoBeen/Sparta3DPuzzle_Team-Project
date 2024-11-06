@@ -21,7 +21,7 @@ public class Builder : MonoBehaviour
     private bool canBuild;
     private bool isSnapped = false;
 
-    private Queue<GameObject> elementHistory = new Queue<GameObject>();
+    private Stack<GameObject> elementHistory = new Stack<GameObject>();
     private GameObject curPlayerPos;
     private GameObject curEndPoint;
     
@@ -33,6 +33,7 @@ public class Builder : MonoBehaviour
     private void Start()
     {
         controller.OnLeftButtonEvent += TryBuildElement;
+        controller.OnRightButtonEvent += DeleteBuildElement;
     }
 
  
@@ -50,8 +51,6 @@ public class Builder : MonoBehaviour
 
         obj.layer = 0;
         obj.transform.GetChild(0).gameObject.layer = 0;
-
-        
         StartCoroutine(MoveCurElement());
     }
 
@@ -88,9 +87,14 @@ public class Builder : MonoBehaviour
 
         AssignPlayerPosElement(obj);
         AssignEndPointElement(obj);
-
-        elementHistory.Enqueue(obj);
         
+        if(obj.TryGetComponent<PuzzleElement>(out PuzzleElement puzzleElement))
+        {
+            Debug.Log("퍼즐 요소입니다.");
+            puzzleElement.InitializePuzzleElement();
+        }
+
+        elementHistory.Push(obj);
     }
 
     private void AssignPlayerPosElement(GameObject obj)
@@ -130,7 +134,7 @@ public class Builder : MonoBehaviour
     public void UndoBuild()
     {
         if(elementHistory.Count > 0)
-            Destroy( elementHistory.Dequeue());
+            Destroy( elementHistory.Pop());
     }
 
     private IEnumerator MoveCurElement()

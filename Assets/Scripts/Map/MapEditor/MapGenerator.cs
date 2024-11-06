@@ -85,6 +85,7 @@ public class MapGenerator : MonoBehaviour
         }
     }
 
+    
     private string RemoveCloneFormat(MapElement element)
     {
         string elementName = element.name;

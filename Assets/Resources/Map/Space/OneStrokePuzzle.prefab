@@ -47,10 +47,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 962cc7329cfb6014e9c2683a58c59395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  previousPuzzleTypes: 
+  currentPuzzleType: 0
   rows: 5
   columns: 5
   cellPrefab: {fileID: 5599221608295326185, guid: fafde701d3e5c3a46be806ec3daba4e3, type: 3}
   generatorTransform: {fileID: 7758505264095010331}
+  mainCamera: {fileID: 0}
   puzzleCamera: {fileID: 8865065257533002405}
 --- !u!65 &6695003770895119029
 BoxCollider:

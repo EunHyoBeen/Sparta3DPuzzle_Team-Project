@@ -3,8 +3,8 @@
 public class PuzzleControllerBase : MonoBehaviour
 {
     [Header("PuzzleController Settings")]
-    [SerializeField] private PuzzleType[] previousPuzzleTypes;
-    [SerializeField] private PuzzleType currentPuzzleType;
+    [SerializeField] protected PuzzleType[] previousPuzzleTypes;
+    [SerializeField] protected PuzzleType currentPuzzleType;
 
     private void Awake()
     {

@@ -129,7 +129,5 @@ public class BuildableElement : MonoBehaviour
 
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position + transform.up * 0.1f, checkSameRadius);
-
-
     }
 }

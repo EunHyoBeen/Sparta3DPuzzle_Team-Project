@@ -192,6 +192,14 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 6079e506-cf76-41be-b8c4-87af08a44ce8
     m_ActionName: Player/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: dbdd5475-9e8b-4292-b63d-8a5dc7dff906
+    m_ActionName: Player/Interaction[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 11e21911-099e-4744-be50-5dbfd0958c61
+    m_ActionName: Player/Inventory[/Keyboard/tab]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -210,6 +218,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
+  condition: {fileID: 0}
+  equip: {fileID: 0}
+  itemData: {fileID: 0}
+  dropPosition: {fileID: 0}
 --- !u!114 &3585049884456139988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,11 +238,12 @@ MonoBehaviour:
   jumpForce: 80
   groundLayerMask:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 6144
   cameraContainer: {fileID: 9156224291686969936}
   minXRot: -85
   maxXRot: 85
   lookSensivity: 0.1
+  canLook: 1
 --- !u!1 &7415965532344436277
 GameObject:
   m_ObjectHideFlags: 0

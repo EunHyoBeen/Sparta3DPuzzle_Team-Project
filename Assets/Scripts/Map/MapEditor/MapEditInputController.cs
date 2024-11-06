@@ -10,6 +10,7 @@ public class MapEditInputController : MonoBehaviour
     public event Action<Vector2> OnMoveEvent;
     public event Action<Vector2> OnRotationEvent;
     public event Action<Vector2> OnScrollEvent;
+    public event Action OnRightButtonEvent;
 
     private bool isScrollButtonOn = false;
     private bool isRightButtonOn = false;
@@ -70,7 +71,11 @@ public class MapEditInputController : MonoBehaviour
     public void OnRightButton(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started)
+        {
             isRightButtonOn = true;
+            OnRightButtonEvent?.Invoke();
+        }
+
         else if (context.phase == InputActionPhase.Canceled)
             isRightButtonOn = false;
     }

@@ -6,16 +6,16 @@ public class OneStrokeGrid : PuzzleControllerBase, IInteractable
     private bool isClear = false;
     public int rows = 5;
     public int columns = 5;
-    public GameObject cellPrefab; // ¼¿ ÇÁ¸®ÆÕ
-    public Transform generatorTransform; // ÆÛÁñ »ý¼º À§Ä¡ (ºÎ¸ð ¿ÀºêÁ§Æ®)
-    public Camera mainCamera; // ¸ÞÀÎ Ä«¸Þ¶ó
-    public Camera puzzleCamera; // ÆÛÁñ Àü¿ë Ä«¸Þ¶ó
+    public GameObject cellPrefab; // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public Transform generatorTransform; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ (ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®)
+    public Camera mainCamera; // ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½Þ¶ï¿½
+    public Camera puzzleCamera; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½Þ¶ï¿½
 
     private OneStrokeCell[,] grid;
-    private OneStrokeCell previousCell = null;  // ÀÌÀü¿¡ ¹æ¹®ÇÑ ¼¿À» ÀúÀå
-    private Vector3 cellScale; // ÇÁ¸®ÆÕ ½ºÄÉÀÏ ÀúÀå
-    private bool isDrawing = false; // »öÄ¥ ÁßÀÎÁö ¿©ºÎ
-    private bool inPuzzleView = false; // ÇöÀç ÆÛÁñ ¸ðµåÀÎÁö ¿©ºÎ
+    private OneStrokeCell previousCell = null;  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½æ¹®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    private Vector3 cellScale; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    private bool isDrawing = false; // ï¿½ï¿½Ä¥ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    private bool inPuzzleView = false; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     private void Start()
     {
@@ -25,6 +25,11 @@ public class OneStrokeGrid : PuzzleControllerBase, IInteractable
 
         mainCamera.gameObject.SetActive(true);
         puzzleCamera.gameObject.SetActive(false);
+    }
+
+    public void SetCurrentPuzzleType(PuzzleType type)
+    {
+        currentPuzzleType = type;
     }
 
     private void GenerateGrid()
@@ -41,19 +46,19 @@ public class OneStrokeGrid : PuzzleControllerBase, IInteractable
             }
         }
 
-        // ¼¿µé °£ÀÇ ¿¬°á ¼³Á¤
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         for (int i = 0; i < rows; i++)
         {
             for (int j = 0; j < columns; j++)
             {
-                if (i > 0) grid[i, j].topCell = grid[i - 1, j]; // À§ÂÊ ¼¿ ¿¬°á
-                if (i < rows - 1) grid[i, j].bottomCell = grid[i + 1, j]; // ¾Æ·¡ÂÊ ¼¿ ¿¬°á
-                if (j > 0) grid[i, j].leftCell = grid[i, j - 1]; // ¿ÞÂÊ ¼¿ ¿¬°á
-                if (j < columns - 1) grid[i, j].rightCell = grid[i, j + 1]; // ¿À¸¥ÂÊ ¼¿ ¿¬°á
+                if (i > 0) grid[i, j].topCell = grid[i - 1, j]; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+                if (i < rows - 1) grid[i, j].bottomCell = grid[i + 1, j]; // ï¿½Æ·ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+                if (j > 0) grid[i, j].leftCell = grid[i, j - 1]; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+                if (j < columns - 1) grid[i, j].rightCell = grid[i, j + 1]; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             }
         }
 
-        // ÀÏºÎ ¼¿ »èÁ¦ (¿¹½Ã)
+        // ï¿½Ïºï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½)
         Destroy(grid[2, 1].gameObject);
         Destroy(grid[2, 0].gameObject);
         Destroy(grid[4, 2].gameObject);
@@ -62,8 +67,8 @@ public class OneStrokeGrid : PuzzleControllerBase, IInteractable
 
     public string GetInteractPrompt()
     {
-        if (isClear) return "ÀÌ¹Ì Å¬¸®¾îÇÑ ÆÛÁñÀÔ´Ï´Ù";
-        return inPuzzleView ? "" : "ÇÑº×±×¸®±â ÆÛÁñÀ» Ç®°í »óÀÚ¸¦ ¿­¾îº¸¼¼¿ä!";
+        if (isClear) return "ï¿½Ì¹ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½";
+        return inPuzzleView ? "" : "ï¿½Ñº×±×¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ç®ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½îº¸ï¿½ï¿½ï¿½ï¿½!";
     }
 
     public void OnInteract()
@@ -104,21 +109,21 @@ public class OneStrokeGrid : PuzzleControllerBase, IInteractable
         isDrawing = true;
         while (true)
         {
-            if (Input.GetMouseButton(0)) // ¸¶¿ì½º ¿ÞÂÊ ¹öÆ°À» ´©¸¥ »óÅÂ
+            if (Input.GetMouseButton(0)) // ï¿½ï¿½ï¿½ì½º ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             {
-                Ray ray = puzzleCamera.ScreenPointToRay(Input.mousePosition); // ÆÛÁñ Ä«¸Þ¶ó¿¡¼­ ·¹ÀÌ Ä³½ºÆ®
+                Ray ray = puzzleCamera.ScreenPointToRay(Input.mousePosition); // ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½Þ¶ó¿¡¼ï¿½ ï¿½ï¿½ï¿½ï¿½ Ä³ï¿½ï¿½Æ®
                 RaycastHit hit;
 
                 if (Physics.Raycast(ray, out hit))
                 {
-                    OneStrokeCell cell = hit.collider.GetComponent<OneStrokeCell>(); // ¸ÂÀº ¼¿ Ã£±â
-                    if (cell != null && !cell.isVisited && IsNeighborCell(previousCell, cell)) // ¹æ¹®ÇÏÁö ¾ÊÀº ¼¿ÀÌ¸ç ÀÌÀü ¼¿°ú ÀÌ¿ôÇÑ ¼¿ÀÎÁö È®ÀÎ
+                    OneStrokeCell cell = hit.collider.GetComponent<OneStrokeCell>(); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Ã£ï¿½ï¿½
+                    if (cell != null && !cell.isVisited && IsNeighborCell(previousCell, cell)) // ï¿½æ¹®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
                     {
                         cell.VisitCell();
                         cell.GetComponent<Renderer>().material.color = Color.green;
                         CheckPuzzleClear();
 
-                        previousCell = cell; // ÇöÀç ¼¿À» ÀÌÀü ¼¿·Î ¾÷µ¥ÀÌÆ®
+                        previousCell = cell; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
                         isDrawing = true;
                     }
                 }
@@ -133,12 +138,12 @@ public class OneStrokeGrid : PuzzleControllerBase, IInteractable
         }
     }
 
-    // ÀÌÀü ¼¿°ú ÇöÀç ¼¿ÀÌ 1Ä­ ÀÌ»ó ¶³¾îÁ® ÀÖ´ÂÁö È®ÀÎÇÏ´Â ¸Þ¼­µå
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 1Ä­ ï¿½Ì»ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½
     private bool IsNeighborCell(OneStrokeCell fromCell, OneStrokeCell toCell)
     {
-        if (fromCell == null) return true; // Ã³À½ ¼¿Àº ¹æ¹®À» Çã¿ë
+        if (fromCell == null) return true; // Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½æ¹®ï¿½ï¿½ ï¿½ï¿½ï¿½
 
-        // ÀÌÀü ¼¿°ú ÇöÀç ¼¿ÀÇ ¿¬°á °ü°è¸¦ È®ÀÎ: »óÇÏÁÂ¿ì ÀÎÁ¢ ¼¿ Áß ÇÏ³ªÀÎÁö Ã¼Å©
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½è¸¦ È®ï¿½ï¿½: ï¿½ï¿½ï¿½ï¿½ï¿½Â¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¼Å©
         return fromCell.topCell == toCell || fromCell.bottomCell == toCell ||
                fromCell.leftCell == toCell || fromCell.rightCell == toCell;
     }
@@ -163,7 +168,7 @@ public class OneStrokeGrid : PuzzleControllerBase, IInteractable
         }
         isClear = true;
         PublishPuzzleClear();
-        Debug.Log("ÆÛÁñ Å¬¸®¾î!");
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½!");
         ExitPuzzleView();
     }
 }

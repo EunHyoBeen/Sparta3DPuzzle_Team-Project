@@ -22,8 +22,7 @@ public class MapEditor : DestroySingleton<MapEditor>
     protected override void Awake()
     {
         base.Awake();
-        Debug.Log("초기화");
-        controller = GetComponent<MapEditInputController>();
+         controller = GetComponent<MapEditInputController>();
         generator = GetComponent<MapGenerator>();
         builder = GetComponent<Builder>();
         
