@@ -3,8 +3,13 @@
 public class PuzzleControllerBase : MonoBehaviour
 {
     [Header("PuzzleController Settings")]
-    [SerializeField] private PuzzleType[] previousPuzzleTypes;
-    [SerializeField] private PuzzleType currentPuzzleType;
+    [SerializeField] protected PuzzleType[] previousPuzzleTypes;
+    [SerializeField] protected PuzzleType currentPuzzleType;
+
+    public PuzzleType CurrentPuzzleType
+    {
+        get { return currentPuzzleType; }
+    }
 
     private void Awake()
     {
@@ -13,7 +18,13 @@ public class PuzzleControllerBase : MonoBehaviour
             Debug.LogError("StageEventBus가 존재하지 않습니다.");
         }
     }
-
+    
+    public void SetCurrentPuzzleType(PuzzleType type)
+    {
+        currentPuzzleType = type;
+            Debug.Log(currentPuzzleType);
+    }
+    
     protected virtual void OnEnable()
     {
         SubscribeToPreviousPuzzles();

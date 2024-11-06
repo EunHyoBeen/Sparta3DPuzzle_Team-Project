@@ -6,16 +6,18 @@ public class OneStrokeGrid : PuzzleControllerBase, IInteractable
     private bool isClear = false;
     public int rows = 5;
     public int columns = 5;
-    public GameObject cellPrefab; // 셀 프리팹
-    public Transform generatorTransform; // 퍼즐 생성 위치 (부모 오브젝트)
-    public Camera mainCamera; // 메인 카메라
-    public Camera puzzleCamera; // 퍼즐 전용 카메라
+    public GameObject cellPrefab; // �� ������
+    public Transform generatorTransform; // ���� ���� ��ġ (�θ� ������Ʈ)
+    public Camera mainCamera; // ���� ī�޶�
+    public Camera puzzleCamera; // ���� ���� ī�޶�
 
+    [SerializeField] Transform pannelCenter;
+        
     private OneStrokeCell[,] grid;
-    private OneStrokeCell previousCell = null;  // 이전에 방문한 셀을 저장
-    private Vector3 cellScale; // 프리팹 스케일 저장
-    private bool isDrawing = false; // 색칠 중인지 여부
-    private bool inPuzzleView = false; // 현재 퍼즐 모드인지 여부
+    private OneStrokeCell previousCell = null;  // ������ �湮�� ���� ����
+    private Vector3 cellScale; // ������ ������ ����
+    private bool isDrawing = false; // ��ĥ ������ ����
+    private bool inPuzzleView = false; // ���� ���� ������� ����
 
     private void Start()
     {
@@ -27,45 +29,53 @@ public class OneStrokeGrid : PuzzleControllerBase, IInteractable
         puzzleCamera.gameObject.SetActive(false);
     }
 
+
+
     private void GenerateGrid()
     {
         grid = new OneStrokeCell[rows, columns];
+    
+        int remainCount = rows / 2;
+    
+        Vector3 pivotPos = pannelCenter.localPosition;
+        pivotPos.x += (pannelCenter.localScale.x / 2);
+        pivotPos.y -= (remainCount * cellScale.y);
+        pivotPos.z -= (remainCount * cellScale.z);
+    
         for (int i = 0; i < rows; i++)
         {
             for (int j = 0; j < columns; j++)
             {
                 GameObject cellObject = Instantiate(cellPrefab, generatorTransform);
                 cellObject.transform.localScale = cellScale;
-                cellObject.transform.localPosition = new Vector3(0, i * cellScale.y, j * cellScale.z);
+                cellObject.transform.localPosition = pivotPos + new Vector3(0, i * cellScale.y, j * cellScale.z);
                 grid[i, j] = cellObject.GetComponent<OneStrokeCell>();
             }
         }
 
-        // 셀들 간의 연결 설정
+        // ���� ���� ���� ����
         for (int i = 0; i < rows; i++)
         {
             for (int j = 0; j < columns; j++)
             {
-                if (i > 0) grid[i, j].topCell = grid[i - 1, j]; // 위쪽 셀 연결
-                if (i < rows - 1) grid[i, j].bottomCell = grid[i + 1, j]; // 아래쪽 셀 연결
-                if (j > 0) grid[i, j].leftCell = grid[i, j - 1]; // 왼쪽 셀 연결
-                if (j < columns - 1) grid[i, j].rightCell = grid[i, j + 1]; // 오른쪽 셀 연결
+                if (i > 0) grid[i, j].topCell = grid[i - 1, j]; // ���� �� ����
+                if (i < rows - 1) grid[i, j].bottomCell = grid[i + 1, j]; // �Ʒ��� �� ����
+                if (j > 0) grid[i, j].leftCell = grid[i, j - 1]; // ���� �� ����
+                if (j < columns - 1) grid[i, j].rightCell = grid[i, j + 1]; // ������ �� ����
             }
         }
 
-        // 일부 셀 삭제 (예시)
+        // �Ϻ� �� ���� (����)
         Destroy(grid[2, 1].gameObject);
         Destroy(grid[2, 0].gameObject);
         Destroy(grid[4, 2].gameObject);
         Destroy(grid[1, 3].gameObject);
     }
-
     public string GetInteractPrompt()
     {
         if (isClear) return "이미 클리어한 퍼즐입니다";
         return inPuzzleView ? "" : "한붓그리기 퍼즐을 풀고 상자를 열어보세요!";
     }
-
     public void OnInteract()
     {
         if (isClear) return;
@@ -104,21 +114,21 @@ public class OneStrokeGrid : PuzzleControllerBase, IInteractable
         isDrawing = true;
         while (true)
         {
-            if (Input.GetMouseButton(0)) // 마우스 왼쪽 버튼을 누른 상태
+            if (Input.GetMouseButton(0)) // ���콺 ���� ��ư�� ���� ����
             {
-                Ray ray = puzzleCamera.ScreenPointToRay(Input.mousePosition); // 퍼즐 카메라에서 레이 캐스트
+                Ray ray = puzzleCamera.ScreenPointToRay(Input.mousePosition); // ���� ī�޶󿡼� ���� ĳ��Ʈ
                 RaycastHit hit;
 
                 if (Physics.Raycast(ray, out hit))
                 {
-                    OneStrokeCell cell = hit.collider.GetComponent<OneStrokeCell>(); // 맞은 셀 찾기
-                    if (cell != null && !cell.isVisited && IsNeighborCell(previousCell, cell)) // 방문하지 않은 셀이며 이전 셀과 이웃한 셀인지 확인
+                    OneStrokeCell cell = hit.collider.GetComponent<OneStrokeCell>(); // ���� �� ã��
+                    if (cell != null && !cell.isVisited && IsNeighborCell(previousCell, cell)) // �湮���� ���� ���̸� ���� ���� �̿��� ������ Ȯ��
                     {
                         cell.VisitCell();
                         cell.GetComponent<Renderer>().material.color = Color.green;
                         CheckPuzzleClear();
 
-                        previousCell = cell; // 현재 셀을 이전 셀로 업데이트
+                        previousCell = cell; // ���� ���� ���� ���� ������Ʈ
                         isDrawing = true;
                     }
                 }
@@ -133,12 +143,12 @@ public class OneStrokeGrid : PuzzleControllerBase, IInteractable
         }
     }
 
-    // 이전 셀과 현재 셀이 1칸 이상 떨어져 있는지 확인하는 메서드
+    // ���� ���� ���� ���� 1ĭ �̻� ������ �ִ��� Ȯ���ϴ� �޼���
     private bool IsNeighborCell(OneStrokeCell fromCell, OneStrokeCell toCell)
     {
-        if (fromCell == null) return true; // 처음 셀은 방문을 허용
+        if (fromCell == null) return true; // ó�� ���� �湮�� ���
 
-        // 이전 셀과 현재 셀의 연결 관계를 확인: 상하좌우 인접 셀 중 하나인지 체크
+        // ���� ���� ���� ���� ���� ���踦 Ȯ��: �����¿� ���� �� �� �ϳ����� üũ
         return fromCell.topCell == toCell || fromCell.bottomCell == toCell ||
                fromCell.leftCell == toCell || fromCell.rightCell == toCell;
     }

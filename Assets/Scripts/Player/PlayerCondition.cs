@@ -18,10 +18,11 @@ public class PlayerCondition : MonoBehaviour , IDamageable
 
     public event Action onTakeDamage;
 
-    // Update is called once per frame
-    void Update()
+ 
+
+     void Update()
     {
-        stamina.Add(stamina.passiveValue * Time.deltaTime);
+         stamina.Add(stamina.passiveValue * Time.deltaTime);
 
         if(health.curValue <= 0)
         {

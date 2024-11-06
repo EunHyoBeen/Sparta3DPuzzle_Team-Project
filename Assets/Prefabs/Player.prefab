@@ -79,6 +79,8 @@ GameObject:
   - component: {fileID: 3602554668784345332}
   - component: {fileID: 3585049884456139988}
   - component: {fileID: 2013845149969660387}
+  - component: {fileID: 6821428699873194181}
+  - component: {fileID: 4355824528416205113}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -258,6 +260,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 11e21911-099e-4744-be50-5dbfd0958c61
     m_ActionName: Player/Inventory[/Keyboard/tab]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3585049884456139988}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnRun
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ee04fb22-ec64-4895-be8d-98beaf4288ed
+    m_ActionName: Player/Run[/Keyboard/leftShift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -276,7 +294,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
-  itemData: {fileID: 0}
+  condition: {fileID: 0}
+  equip: {fileID: 0}
+  inventory: {fileID: 0}
   dropPosition: {fileID: 5763596462474103503}
 --- !u!114 &3585049884456139988
 MonoBehaviour:
@@ -295,6 +315,7 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 2048
+  useStamina: 1
   cameraContainer: {fileID: 9156224291686969936}
   minXRot: -85
   maxXRot: 85
@@ -319,6 +340,34 @@ MonoBehaviour:
     m_Bits: 1024
   curInteractGameObject: {fileID: 0}
   promptText: {fileID: 0}
+--- !u!114 &6821428699873194181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5446035398646853611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3aec045fef7715408f7a4a1a206e26d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curEquip: {fileID: 0}
+  equipParent: {fileID: 2510081656706026740}
+--- !u!114 &4355824528416205113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5446035398646853611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52b24b5407331f448e854b4a0c33772, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiCondition: {fileID: 0}
+  spawnPoint: {fileID: 0}
 --- !u!1 &7415965532344436277
 GameObject:
   m_ObjectHideFlags: 0
