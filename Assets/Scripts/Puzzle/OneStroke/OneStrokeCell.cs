@@ -2,16 +2,8 @@ using UnityEngine;
 
 public class OneStrokeCell : MonoBehaviour
 {
-    public bool isStartPoint = false;
-    public bool isEndPoint = false;
-    public bool hasTopPath, hasBottomPath, hasLeftPath, hasRightPath;
     public bool isVisited = false;
 
-    // 셀 간의 경로를 연결하는 기능
-    public OneStrokeCell topCell;
-    public OneStrokeCell bottomCell;
-    public OneStrokeCell leftCell;
-    public OneStrokeCell rightCell;
 
     // 색상 설정
     public Color visitedColor = Color.green; // 방문한 셀의 색상
@@ -54,13 +46,5 @@ public class OneStrokeCell : MonoBehaviour
         {
             cellRenderer.material.color = newColor; // 색상 변경
         }
-    }
-
-    public void ConnectPaths()
-    {
-        if (topCell != null) hasTopPath = true;
-        if (bottomCell != null) hasBottomPath = true;
-        if (leftCell != null) hasLeftPath = true;
-        if (rightCell != null) hasRightPath = true;
     }
 }
