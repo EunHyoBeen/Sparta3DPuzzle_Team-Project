@@ -172,9 +172,9 @@ public class UIInventory : MonoBehaviour
         slots[selectedItemIndex].equipped = true;
         curEquipIndex = selectedItemIndex;
         CharacterManager.Instance.Player.equip.EquipNew(selectedItem);
-        //UpdateUI();
+        UpdateUI();
 
-        //SelectItem(selectedItemIndex);
+        SelectItem(selectedItemIndex);
     }
 
     void UnEquip(int index)
