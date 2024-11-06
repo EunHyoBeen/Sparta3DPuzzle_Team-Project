@@ -1090,6 +1090,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: YellowKey
       objectReference: {fileID: 0}
+    - target: {fileID: 2905599053971990992, guid: bdc6c57edec244a15a71361b5c2a8c4a, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7664468988992538617, guid: bdc6c57edec244a15a71361b5c2a8c4a, type: 3}
     m_RemovedGameObjects: []
@@ -4765,6 +4769,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chest1
       objectReference: {fileID: 0}
+    - target: {fileID: 1014016053025180989, guid: 004a04d124a1f7d4d9d815f5cab8aeda, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400814398779654889, guid: 004a04d124a1f7d4d9d815f5cab8aeda, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5485392837200967135, guid: 004a04d124a1f7d4d9d815f5cab8aeda, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6
@@ -4815,7 +4827,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1014016053025180989, guid: 004a04d124a1f7d4d9d815f5cab8aeda, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2879328719749708849}
+      addedObject: {fileID: 2879328719749708853}
   m_SourcePrefab: {fileID: 100100000, guid: 004a04d124a1f7d4d9d815f5cab8aeda, type: 3}
 --- !u!1 &2879328719749708841 stripped
 GameObject:
@@ -4827,7 +4839,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2595376553540129437, guid: 004a04d124a1f7d4d9d815f5cab8aeda, type: 3}
   m_PrefabInstance: {fileID: 2879328719749708840}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2879328719749708849
+--- !u!114 &2879328719749708853
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4836,10 +4848,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2879328719749708841}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88ca0a69bd70c714a8d75469e45505e4, type: 3}
+  m_Script: {fileID: 11500000, guid: aaf292c1ac73ef143ab9409a30239223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chestLock: {fileID: 0}
+  previousPuzzleTypes: 00000000
+  currentPuzzleType: 1
   lidTransform: {fileID: 2879328719749708843}
   openAngle: -120
   openSpeed: 2
@@ -8714,6 +8727,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 2967326683773427739, guid: c8042c87d86004fada5995c7f50ea069, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7593570600844896024, guid: c8042c87d86004fada5995c7f50ea069, type: 3}
       propertyPath: ease
       value: 10
@@ -9337,6 +9354,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ca0a69bd70c714a8d75469e45505e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  previousPuzzleTypes: 
+  currentPuzzleType: 3
   chestLock: {fileID: 1436402028}
   lidTransform: {fileID: 6466468158881993145}
   openAngle: -120
@@ -9778,6 +9797,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ca0a69bd70c714a8d75469e45505e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  previousPuzzleTypes: 
+  currentPuzzleType: 2
   chestLock: {fileID: 401431567}
   lidTransform: {fileID: 6932642877219531247}
   openAngle: -120

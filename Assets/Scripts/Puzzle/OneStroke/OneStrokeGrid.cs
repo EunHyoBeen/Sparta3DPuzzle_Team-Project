@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class OneStrokeGrid : MonoBehaviour, IInteractable
+public class OneStrokeGrid : PuzzleControllerBase, IInteractable
 {
     private bool isClear = false;
     public int rows = 5;
@@ -17,9 +17,6 @@ public class OneStrokeGrid : MonoBehaviour, IInteractable
     private Vector3 cellScale; // 프리팹 스케일 저장
     private bool isDrawing = false; // 색칠 중인지 여부
     private bool inPuzzleView = false; // 현재 퍼즐 모드인지 여부
-
-    //private Vector3 playerInitialPosition;
-    //private Quaternion playerInitialRotation;
 
     private void Start()
     {
@@ -82,7 +79,7 @@ public class OneStrokeGrid : MonoBehaviour, IInteractable
         mainCamera.gameObject.SetActive(false);
         puzzleCamera.gameObject.SetActive(true);
 
-        playerRb.isKinematic = true;
+        CharacterManager.Instance.Player.OnPuzzle(!inPuzzleView);
 
         Cursor.lockState = CursorLockMode.None;
         StartCoroutine(DrawPuzzle());
@@ -97,7 +94,7 @@ public class OneStrokeGrid : MonoBehaviour, IInteractable
         StopCoroutine(DrawPuzzle());
         ResetPuzzle();
 
-        playerRb.isKinematic = false;
+        CharacterManager.Instance.Player.OnPuzzle(!inPuzzleView);
 
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -165,6 +162,7 @@ public class OneStrokeGrid : MonoBehaviour, IInteractable
             if (cell != null && !cell.isVisited) return;
         }
         isClear = true;
+        PublishPuzzleClear();
         Debug.Log("퍼즐 클리어!");
         ExitPuzzleView();
     }

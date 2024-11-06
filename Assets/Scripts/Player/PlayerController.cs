@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    private bool canControl = true;
+
     [Header("Move")]
     public int moveSpeed;
     private Vector2 curMoveInput;
@@ -32,16 +34,24 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        CharacterManager.Instance.Player.onPuzzleEvent += CheckControll;
     }
 
     private void FixedUpdate()
     {
-        Move();
+        if(canControl)
+            Move();
     }
 
     private void LateUpdate()
     {
-        Look();
+        if(canControl)
+            Look();
+    }
+
+    private void CheckControll(bool canControl)
+    {
+        this.canControl = canControl;
     }
 
     private void Move()
