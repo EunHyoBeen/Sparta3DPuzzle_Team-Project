@@ -4,7 +4,7 @@ using UnityEngine;
 public class ChestPuzzle : PuzzleControllerBase
 {
     private bool isOpen = false;
-    public Transform lidTransform;    // 상자 뚜껑 Transform
+    public Transform lidTransform;  
     public float openAngle = 120f;
     public float openSpeed = 2f;
 
@@ -12,6 +12,7 @@ public class ChestPuzzle : PuzzleControllerBase
     private Quaternion openRotation;
     private Coroutine openCoroutine;
 
+     
     private void Start()
     {
         closedRotation = lidTransform.localRotation;
@@ -20,10 +21,8 @@ public class ChestPuzzle : PuzzleControllerBase
 
     public void OnInteract()
     {
-        // 이미 열렸으면 아무것도 하지 않음
         if (isOpen) return;
 
-        // 열기 애니메이션 시작
         if (openCoroutine != null)
             StopCoroutine(openCoroutine);
 
@@ -43,7 +42,7 @@ public class ChestPuzzle : PuzzleControllerBase
         }
 
         lidTransform.localRotation = targetRotation;
-        isOpen = true; // 상자를 열었음
+        isOpen = true; 
     }
 
     protected override void ActivatePuzzle()

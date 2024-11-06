@@ -8,10 +8,10 @@ public class SaveUI : MonoBehaviour
     [SerializeField] Button saveButton;
     [SerializeField] Button cancelButton;
     [SerializeField] private TMP_InputField mapNameInputField;
-
+    [SerializeField] private GameObject AlertPanel;
 
     private string mapName;
-    
+
     private void Start()
     {
         InitSaveUIButton();
@@ -23,21 +23,25 @@ public class SaveUI : MonoBehaviour
         saveButton.onClick.AddListener(OnSaveButton);
     }
 
-    
+
     private void OnCancelButton()
     {
         gameObject.SetActive(false);
     }
-    
+
     private void OnSaveButton()
     {
         mapName = mapNameInputField.text;
-        
-        if(String.IsNullOrEmpty(mapName))
+
+        if (!GameObject.Find("PlayerPosIndicator(Clone)") || !GameObject.Find("PlayerPosIndicator(Clone)"))
+        {
+            AlertPanel.SetActive(true);
             return;
-        
-        MapDataManager.Instance.SaveMapData(mapName);  
+        }
+
+        if (String.IsNullOrEmpty(mapName))
+            return;
+        MapDataManager.Instance.SaveMapData(mapName);
         gameObject.SetActive(false);
     }
-
 }
