@@ -13,7 +13,7 @@ public class Board : MonoBehaviour
 	private float neighborTileDistance = 102;//인접한 타일 사이의 거리. 
 	public Vector3 EmptyTilePositon { set; get; } //빈타일 위치
 
-	private IEnumerator Start()
+	public IEnumerator OnStart()
 	{
         Cursor.lockState = CursorLockMode.None;
         tileList = new List<Tile>();

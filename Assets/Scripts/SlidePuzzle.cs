@@ -15,5 +15,6 @@ public class SlidePuzzle : MonoBehaviour
     {
         puzzleBoard.gameObject.SetActive(true);
         CharacterManager.Instance.Player.OnPuzzle(false);
+        puzzleBoard.StartCoroutine(puzzleBoard.OnStart());
     }
 }
