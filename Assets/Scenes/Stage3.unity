@@ -123,17 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &119237741 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5693454450827401090, guid: fb32bd4ad05ef4743a4c0a2f08fa8cf8, type: 3}
-  m_PrefabInstance: {fileID: 1515931308}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 375a8b47e58cc4f578867473d989bb25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &164241358 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2124852349717053124, guid: bfd5eaf051ea70c4ca50ca6a641b83ea, type: 3}
@@ -145,45 +134,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &558121024 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 856428062618141025, guid: fb32bd4ad05ef4743a4c0a2f08fa8cf8, type: 3}
-  m_PrefabInstance: {fileID: 1515931308}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &558121026
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 558121024}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 4, y: 1, z: 4}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &558121027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 558121024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4084f86dbc772d4ebd5a5589c6b03da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzleBoard: {fileID: 119237741}
 --- !u!114 &659635157 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2070134662287560959, guid: bfd5eaf051ea70c4ca50ca6a641b83ea, type: 3}
@@ -440,13 +390,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 856428062618141025, guid: fb32bd4ad05ef4743a4c0a2f08fa8cf8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 558121026}
-    - targetCorrespondingSourceObject: {fileID: 856428062618141025, guid: fb32bd4ad05ef4743a4c0a2f08fa8cf8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 558121027}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb32bd4ad05ef4743a4c0a2f08fa8cf8, type: 3}
 --- !u!114 &1546070208 stripped
 MonoBehaviour:
