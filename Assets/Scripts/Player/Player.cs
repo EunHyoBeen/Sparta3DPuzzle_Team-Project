@@ -7,13 +7,13 @@ public class Player : MonoBehaviour
 {
     public PlayerController controller;
     public PlayerCondition condition;
-    public Equipment equip;
-    
+    public Equipment equip;  
 
 
     public ItemData itemData;
     public Action addItem;
 
+    public event Action<bool> onPuzzleEvent;
     public Transform dropPosition;
 
     // Start is called before the first frame update
@@ -29,5 +29,10 @@ public class Player : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void OnPuzzle(bool inPuzzleView)
+    {
+        onPuzzleEvent?.Invoke(inPuzzleView);
     }
 }

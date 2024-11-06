@@ -1,12 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    private bool canControl = true;
+
     [Header("Move")]
     public int moveSpeed;
     private Vector2 curMoveInput;
@@ -38,15 +39,24 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        CharacterManager.Instance.Player.onPuzzleEvent += CheckControll;
     }
 
     private void FixedUpdate()
     {
-        Move();
+        if(canControl)
+            Move();
     }
 
     private void LateUpdate()
     {
+        if(canControl)
+            Look();
+    }
+
+    private void CheckControll(bool canControl)
+    {
+        this.canControl = canControl;
         if (canLook)
         {
             Look();
