@@ -48,6 +48,9 @@ public class PlayerController : MonoBehaviour
     {
         if(canControl)
             Move();
+
+        if (isRunning)
+            Run();
     }
 
     private void LateUpdate()
@@ -150,13 +153,29 @@ public class PlayerController : MonoBehaviour
         {
             if (CharacterManager.Instance.Player.condition.UseStamina(useStamina))
             {
-                isRunning = true;
-                moveSpeed = 4;
+                Run();
             }
         }
         else if(context.phase == InputActionPhase.Canceled)
         {
-            moveSpeed = 2;
+            RunCancel();
         }
+    }
+
+    public void Run()
+    {
+        if (CharacterManager.Instance.Player.condition.UseStamina(useStamina))
+        {
+            isRunning = true;
+            moveSpeed = 4;
+        }
+        else
+            RunCancel();
+    }
+
+    public void RunCancel()
+    {
+        isRunning = false;
+        moveSpeed = 2;
     }
 }
