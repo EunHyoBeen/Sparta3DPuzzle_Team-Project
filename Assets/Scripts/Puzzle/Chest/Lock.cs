@@ -10,7 +10,8 @@ public class Lock : MonoBehaviour
 
     private void Start()
     {
-        inventory = CharacterManager.Instance.Player.inventory; // 플레이어 인벤토리 찾기
+        if(CharacterManager.Instance.Player.inventory != null)
+             inventory = CharacterManager.Instance.Player.inventory; // 플레이어 인벤토리 찾기
     }
 
     // 자물쇠가 열려 있는지 확인

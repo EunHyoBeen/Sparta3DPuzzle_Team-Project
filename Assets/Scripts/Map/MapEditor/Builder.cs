@@ -82,7 +82,7 @@ public class Builder : MonoBehaviour
         GameObject obj = Instantiate(
             Resources.Load<GameObject>(curElementResourcePath),
             DetectNearElement(),  
-            Quaternion.identity, 
+            curElement.transform.localRotation, 
             MapEditor.Instance.mapContainer.transform  
         );
 

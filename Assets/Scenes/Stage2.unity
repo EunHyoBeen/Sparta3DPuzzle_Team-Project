@@ -183,7 +183,8 @@ PrefabInstance:
       propertyPath: pannelCenter
       value: 
       objectReference: {fileID: 2051347993}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3387565641905307071, guid: 013f9d1069ff49e4780c0ab03a546543, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

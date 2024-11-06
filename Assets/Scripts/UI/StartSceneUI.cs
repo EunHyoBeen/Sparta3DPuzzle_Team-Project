@@ -55,6 +55,7 @@ public class StartSceneUI : MonoBehaviour
 
     public void OnReStartButton()
     {
+        DataManager.Instance.SetTopScene("Stage1");
         SceneManager.LoadScene("Stage1");
     }
 
