@@ -73,10 +73,9 @@ public class OneStrokeGrid : PuzzleControllerBase, IInteractable
     }
     public string GetInteractPrompt()
     {
-        if (isClear) return "�̹� Ŭ������ �����Դϴ�";
-        return inPuzzleView ? "" : "�Ѻױ׸��� ������ Ǯ�� ���ڸ� �������!";
+        if (isClear) return "이미 클리어한 퍼즐입니다";
+        return inPuzzleView ? "" : "한붓그리기 퍼즐을 풀고 상자를 열어보세요!";
     }
-
     public void OnInteract()
     {
         if (isClear) return;
@@ -174,7 +173,7 @@ public class OneStrokeGrid : PuzzleControllerBase, IInteractable
         }
         isClear = true;
         PublishPuzzleClear();
-        Debug.Log("���� Ŭ����!");
+        Debug.Log("퍼즐 클리어!");
         ExitPuzzleView();
     }
 }

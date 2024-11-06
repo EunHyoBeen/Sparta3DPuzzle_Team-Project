@@ -179,6 +179,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage2
       objectReference: {fileID: 0}
+    - target: {fileID: 8241245635130378250, guid: 013f9d1069ff49e4780c0ab03a546543, type: 3}
+      propertyPath: pannelCenter
+      value: 
+      objectReference: {fileID: 2051347993}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -248,6 +252,14 @@ PrefabInstance:
       propertyPath: inventory
       value: 
       objectReference: {fileID: 1383923329}
+    - target: {fileID: 4355824528416205113, guid: 2ebce14b58d9ebc488113e5b8aab2f76, type: 3}
+      propertyPath: spawnPoint
+      value: 
+      objectReference: {fileID: 698724643}
+    - target: {fileID: 4355824528416205113, guid: 2ebce14b58d9ebc488113e5b8aab2f76, type: 3}
+      propertyPath: uiCondition
+      value: 
+      objectReference: {fileID: 1383923331}
     - target: {fileID: 5446035398646853611, guid: 2ebce14b58d9ebc488113e5b8aab2f76, type: 3}
       propertyPath: m_Name
       value: Player
@@ -516,6 +528,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &698724643 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7576460991983176416, guid: 013f9d1069ff49e4780c0ab03a546543, type: 3}
+  m_PrefabInstance: {fileID: 122137151}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1383923328
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -551,6 +568,14 @@ PrefabInstance:
     - target: {fileID: 2051047422208011763, guid: bfd5eaf051ea70c4ca50ca6a641b83ea, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2070134662287560959, guid: bfd5eaf051ea70c4ca50ca6a641b83ea, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 7e996323032deb04ebcd25df8dfbd751, type: 2}
+    - target: {fileID: 2070134662287560959, guid: bfd5eaf051ea70c4ca50ca6a641b83ea, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2124852349717053124, guid: bfd5eaf051ea70c4ca50ca6a641b83ea, type: 3}
       propertyPath: m_Enabled
@@ -993,6 +1018,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &2051347993 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4093361425656490539, guid: 013f9d1069ff49e4780c0ab03a546543, type: 3}
+  m_PrefabInstance: {fileID: 122137151}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

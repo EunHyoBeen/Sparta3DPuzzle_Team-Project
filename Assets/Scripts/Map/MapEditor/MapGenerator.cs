@@ -77,8 +77,19 @@ public class MapGenerator : MonoBehaviour
                 prefab = Resources.Load<GameObject>($"Map/{Type}/{elementName}");
             }
 
+            GameObject obj;
 
-            GameObject obj = Instantiate(prefab, loadedMap.transform);
+            if (prefab.TryGetComponent<Player>(out Player player))
+            {
+                 obj = Instantiate(prefab);
+            }
+
+            else
+            {
+                 obj = Instantiate(prefab, loadedMap.transform);
+            }
+
+                
             obj.transform.position = element.position;
             obj.transform.rotation = element.rotation;
             obj.transform.localScale = element.localScale;
@@ -86,6 +97,8 @@ public class MapGenerator : MonoBehaviour
             {
                 type.SetCurrentPuzzleType(element.type);
             }
+
+            
 
         }
         
