@@ -11,7 +11,7 @@ public class PortalManager : MonoBehaviour
 
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+		if (canTeleport && other.gameObject.layer == LayerMask.NameToLayer("Player"))
 		{
 			StartCoroutine(Teleport(other));
 		}
@@ -20,9 +20,10 @@ public class PortalManager : MonoBehaviour
 	{
 		canTeleport = false; // 현재 포탈 중복 텔레포트 방지
 							 // 플레이어를 목적지 포탈로 이동
-		player.transform.position = exitPltal.position;
-		// 플레이어에 쿨다운 상태 부여 (포탈 충돌을 일시적으로 무시)
-		PortalManager portalScript = exitPltal.GetComponent<PortalManager>();
+		player.transform.position = exitPltal.position + exitPltal.right * -1f;
+        player.transform.Rotate(0, 180f, 0);
+        // 플레이어에 쿨다운 상태 부여 (포탈 충돌을 일시적으로 무시)
+        PortalManager portalScript = exitPltal.GetComponent<PortalManager>();
 		portalScript.canTeleport = false;
 		// 지정된 쿨다운 시간 대기
 		yield return new WaitForSeconds(teleportCooldown);

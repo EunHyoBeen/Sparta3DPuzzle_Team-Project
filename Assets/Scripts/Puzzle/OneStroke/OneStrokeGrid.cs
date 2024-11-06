@@ -10,7 +10,7 @@ public class OneStrokeGrid : MonoBehaviour, IInteractable
     public Transform generatorTransform; // 퍼즐 생성 위치 (부모 오브젝트)
     public Camera mainCamera; // 메인 카메라
     public Camera puzzleCamera; // 퍼즐 전용 카메라
-    public Transform player; // 플레이어 Transform 추가
+    public Rigidbody playerRb; // 플레이어 Rigidbody 추가
 
     private OneStrokeCell[,] grid;
     private OneStrokeCell previousCell = null;  // 이전에 방문한 셀을 저장
@@ -18,8 +18,8 @@ public class OneStrokeGrid : MonoBehaviour, IInteractable
     private bool isDrawing = false; // 색칠 중인지 여부
     private bool inPuzzleView = false; // 현재 퍼즐 모드인지 여부
 
-    private Vector3 playerInitialPosition;
-    private Quaternion playerInitialRotation;
+    //private Vector3 playerInitialPosition;
+    //private Quaternion playerInitialRotation;
 
     private void Start()
     {
@@ -44,6 +44,19 @@ public class OneStrokeGrid : MonoBehaviour, IInteractable
             }
         }
 
+        // 셀들 간의 연결 설정
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < columns; j++)
+            {
+                if (i > 0) grid[i, j].topCell = grid[i - 1, j]; // 위쪽 셀 연결
+                if (i < rows - 1) grid[i, j].bottomCell = grid[i + 1, j]; // 아래쪽 셀 연결
+                if (j > 0) grid[i, j].leftCell = grid[i, j - 1]; // 왼쪽 셀 연결
+                if (j < columns - 1) grid[i, j].rightCell = grid[i, j + 1]; // 오른쪽 셀 연결
+            }
+        }
+
+        // 일부 셀 삭제 (예시)
         Destroy(grid[2, 1].gameObject);
         Destroy(grid[2, 0].gameObject);
         Destroy(grid[4, 2].gameObject);
@@ -69,9 +82,7 @@ public class OneStrokeGrid : MonoBehaviour, IInteractable
         mainCamera.gameObject.SetActive(false);
         puzzleCamera.gameObject.SetActive(true);
 
-        // 플레이어 위치와 회전 고정
-        playerInitialPosition = player.position;
-        playerInitialRotation = player.rotation;
+        playerRb.isKinematic = true;
 
         Cursor.lockState = CursorLockMode.None;
         StartCoroutine(DrawPuzzle());
@@ -86,9 +97,7 @@ public class OneStrokeGrid : MonoBehaviour, IInteractable
         StopCoroutine(DrawPuzzle());
         ResetPuzzle();
 
-        // 플레이어 위치와 회전 복원
-        player.position = playerInitialPosition;
-        player.rotation = playerInitialRotation;
+        playerRb.isKinematic = false;
 
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -98,19 +107,21 @@ public class OneStrokeGrid : MonoBehaviour, IInteractable
         isDrawing = true;
         while (true)
         {
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButton(0)) // 마우스 왼쪽 버튼을 누른 상태
             {
-                Ray ray = puzzleCamera.ScreenPointToRay(Input.mousePosition);
+                Ray ray = puzzleCamera.ScreenPointToRay(Input.mousePosition); // 퍼즐 카메라에서 레이 캐스트
                 RaycastHit hit;
 
                 if (Physics.Raycast(ray, out hit))
                 {
-                    OneStrokeCell cell = hit.collider.GetComponent<OneStrokeCell>();
-                    if (cell != null && !cell.isVisited)
+                    OneStrokeCell cell = hit.collider.GetComponent<OneStrokeCell>(); // 맞은 셀 찾기
+                    if (cell != null && !cell.isVisited && IsNeighborCell(previousCell, cell)) // 방문하지 않은 셀이며 이전 셀과 이웃한 셀인지 확인
                     {
                         cell.VisitCell();
                         cell.GetComponent<Renderer>().material.color = Color.green;
                         CheckPuzzleClear();
+
+                        previousCell = cell; // 현재 셀을 이전 셀로 업데이트
                         isDrawing = true;
                     }
                 }
@@ -118,10 +129,21 @@ public class OneStrokeGrid : MonoBehaviour, IInteractable
             else if (isDrawing)
             {
                 ResetPuzzle();
+                previousCell = null;
                 isDrawing = false;
             }
             yield return null;
         }
+    }
+
+    // 이전 셀과 현재 셀이 1칸 이상 떨어져 있는지 확인하는 메서드
+    private bool IsNeighborCell(OneStrokeCell fromCell, OneStrokeCell toCell)
+    {
+        if (fromCell == null) return true; // 처음 셀은 방문을 허용
+
+        // 이전 셀과 현재 셀의 연결 관계를 확인: 상하좌우 인접 셀 중 하나인지 체크
+        return fromCell.topCell == toCell || fromCell.bottomCell == toCell ||
+               fromCell.leftCell == toCell || fromCell.rightCell == toCell;
     }
 
     private void ResetPuzzle()

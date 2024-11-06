@@ -530,9 +530,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5446035398646853611, guid: 2ebce14b58d9ebc488113e5b8aab2f76, type: 3}
       insertIndex: -1
       addedObject: {fileID: 978901272}
-    - targetCorrespondingSourceObject: {fileID: 5446035398646853611, guid: 2ebce14b58d9ebc488113e5b8aab2f76, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 978901273}
   m_SourcePrefab: {fileID: 100100000, guid: 2ebce14b58d9ebc488113e5b8aab2f76, type: 3}
 --- !u!1 &480333282 stripped
 GameObject:
@@ -615,22 +612,14 @@ MonoBehaviour:
     m_Bits: 1024
   curInteractGameObject: {fileID: 0}
   promptText: {fileID: 1813184833}
---- !u!114 &978901273
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 978901265}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74db5282e7ea00f4b82ad9d74250af82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keys: []
 --- !u!4 &978901279 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2973025019542124321, guid: 2ebce14b58d9ebc488113e5b8aab2f76, type: 3}
+  m_PrefabInstance: {fileID: 466143312}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &978901284 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 933530723973747837, guid: 2ebce14b58d9ebc488113e5b8aab2f76, type: 3}
   m_PrefabInstance: {fileID: 466143312}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1055714577
@@ -641,6 +630,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6110418294034677781}
     m_Modifications:
+    - target: {fileID: 2620874661494696671, guid: dacc4983eb1711245b9ed0e41ad58813, type: 3}
+      propertyPath: exitPltal
+      value: 
+      objectReference: {fileID: 2660640661582319745}
     - target: {fileID: 2620874661494696671, guid: dacc4983eb1711245b9ed0e41ad58813, type: 3}
       propertyPath: destinationPortal
       value: 
@@ -4395,6 +4388,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 6110418294034677781}
     m_Modifications:
     - target: {fileID: 2620874661494696671, guid: dacc4983eb1711245b9ed0e41ad58813, type: 3}
+      propertyPath: exitPltal
+      value: 
+      objectReference: {fileID: 1649662255}
+    - target: {fileID: 2620874661494696671, guid: dacc4983eb1711245b9ed0e41ad58813, type: 3}
       propertyPath: destinationPortal
       value: 
       objectReference: {fileID: 1649662255}
@@ -6512,6 +6509,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 978901279}
+    - target: {fileID: 459016591369043077, guid: 961b897c038e7094ba228b1c05f7ee7d, type: 3}
+      propertyPath: playerRb
+      value: 
+      objectReference: {fileID: 978901284}
     - target: {fileID: 459016591369043077, guid: 961b897c038e7094ba228b1c05f7ee7d, type: 3}
       propertyPath: mainCamera
       value: 

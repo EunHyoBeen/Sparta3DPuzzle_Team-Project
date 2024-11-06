@@ -231,10 +231,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8009008715992089958}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 086b3bbbcc036e7458129f6f3dacd77b, type: 3}
+  m_Script: {fileID: 11500000, guid: 728a70ae36b95405f968ac9cb70368e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destinationPortal: {fileID: 0}
+  exitPltal: {fileID: 0}
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
