@@ -13,9 +13,10 @@ public class Board : MonoBehaviour
 	private float neighborTileDistance = 102;//인접한 타일 사이의 거리. 
 	public Vector3 EmptyTilePositon { set; get; } //빈타일 위치
 
-	private IEnumerator Start()
+	public IEnumerator OnStart()
 	{
-		tileList = new List<Tile>();
+        Cursor.lockState = CursorLockMode.None;
+        tileList = new List<Tile>();
 		SpawnTiles();
 
 		UnityEngine.UI.LayoutRebuilder.ForceRebuildLayoutImmediate(tilePerent.GetComponent<RectTransform>());
@@ -25,6 +26,7 @@ public class Board : MonoBehaviour
 		tileList.ForEach(x => x.SetCorrectPosition());
 		StartCoroutine("OnSuffle");
 	}
+
 	private void SpawnTiles()
 	{
 		for (int y = 0; y < puzzleSize.y; ++y)
@@ -72,7 +74,9 @@ public class Board : MonoBehaviour
 		List<Tile> tiles = tileList.FindAll(x => x.Iscorrected == true);
 		if (tiles.Count == puzzleSize.x * puzzleSize.y - 1)
 		{
-			GameObject.Destroy(transform.parent.parent.gameObject);
+            CharacterManager.Instance.Player.OnPuzzle(true);
+            Cursor.lockState = CursorLockMode.Locked;
+            GameObject.Destroy(transform.parent.parent.gameObject);
 		}
 	}
 }

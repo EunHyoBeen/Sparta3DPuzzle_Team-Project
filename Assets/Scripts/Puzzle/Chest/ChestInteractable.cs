@@ -58,6 +58,9 @@ public class ChestInteractable : PuzzleControllerBase, IInteractable
         }
 
         lidTransform.localRotation = targetRotation;
+
+        // 사운드 추가(상자 여는 사운드)
+
         isOpen = true; // 상자를 열었음
     }
 
