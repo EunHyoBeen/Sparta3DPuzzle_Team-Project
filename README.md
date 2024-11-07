@@ -39,6 +39,7 @@
     카메라 회전 : 마우스 스크롤 클릭 + WASD
     물체 회전 : Q , E (인스펙터에서 지정한 각도 만큼 회전)
     
-   
+   ![MapEditor](https://github.com/user-attachments/assets/0d124c7b-6acd-4c1b-b88a-846de91cdca7)
+
 6. 다양한 환경과 테마
     던전 테마, 악몽 테마
