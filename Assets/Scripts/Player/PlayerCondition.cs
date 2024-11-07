@@ -12,16 +12,29 @@ public class PlayerCondition : MonoBehaviour , IDamageable
 {
     public UICondition uiCondition;
     [SerializeField] private Transform spawnPoint;
+    private Vector3 spawnPos;
 
     Condition health { get { return uiCondition.health; } }
     Condition stamina { get { return uiCondition.stamina; } }
 
     public event Action onTakeDamage;
 
-    // Update is called once per frame
+    private void Start()
+    {
+        if(spawnPoint == null)
+        {
+            spawnPos = transform.position;
+        }
+        else
+        {
+            spawnPos = spawnPoint.position;
+        }
+    }
+
+
     void Update()
     {
-        stamina.Add(stamina.passiveValue * Time.deltaTime);
+         stamina.Add(stamina.passiveValue * Time.deltaTime);
 
         if(health.curValue <= 0)
         {
@@ -31,7 +44,7 @@ public class PlayerCondition : MonoBehaviour , IDamageable
 
     public void Die()
     {
-        transform.position = spawnPoint.position;
+        transform.position = spawnPos;
         health.curValue = health.MaxValue;
     }
 

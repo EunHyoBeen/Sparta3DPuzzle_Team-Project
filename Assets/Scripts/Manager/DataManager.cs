@@ -47,7 +47,7 @@ public class DataManager : Singleton<DataManager>
         // json파일 읽어서 Scene Load
         string json = File.ReadAllText(filePath);
         TopSceneData data = JsonUtility.FromJson<TopSceneData>(json);
-        SceneManager.LoadScene(data.sceneName);
+        FadeManager.Instance.LoadScene(data.sceneName);
     }
 
     public void SetTopScene(string name)

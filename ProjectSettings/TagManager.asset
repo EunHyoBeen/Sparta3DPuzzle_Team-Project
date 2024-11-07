@@ -18,11 +18,11 @@ TagManager:
   - Goal
   - Interactable
   - Ground
-  - Equip
-  - 
-  - 
-  - 
-  - 
+  - Terrain
+  - Prop
+  - Trap
+  - PlayerPos
+  - EndPoint
   - 
   - 
   - 

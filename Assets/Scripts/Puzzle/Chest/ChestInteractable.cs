@@ -4,8 +4,8 @@ using UnityEngine;
 public class ChestInteractable : PuzzleControllerBase, IInteractable
 {
     private bool isOpen = false;
-    public Lock chestLock;           // ÀÚ¹°¼è ÂüÁ¶ (nullÀÏ °æ¿ì ÀÚ¹°¼è ¾øÀ½)
-    public Transform lidTransform;    // »óÀÚ ¶Ñ²± Transform
+    public Lock chestLock;           // ï¿½Ú¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (nullï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ú¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
+    public Transform lidTransform;    // ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ²ï¿½ Transform
     public float openAngle = -120f;
     public float openSpeed = 2f;
 
@@ -23,22 +23,17 @@ public class ChestInteractable : PuzzleControllerBase, IInteractable
     {
         if (isOpen) return "";
 
-        // ÀÚ¹°¼è°¡ ¾ø´Â °æ¿ì ¹Ù·Î ¿­ ¼ö ÀÖÀ½
-        if (chestLock == null) return "¿­ ¼ö ÀÖ½À´Ï´Ù";
 
-        // ÀÚ¹°¼è°¡ ÀÖ´Â °æ¿ì ÀÚ¹°¼è°¡ ¿­·È´ÂÁö È®ÀÎ
-        return chestLock.IsUnlocked() || chestLock.CanUnlock() ? "¿­ ¼ö ÀÖ½À´Ï´Ù" : chestLock.requiredKey.name + "°¡ ÇÊ¿äÇÕ´Ï´Ù";
-    }
+        if (chestLock == null) return "ì—´ ìˆ˜ ìˆìŠµë‹ˆë‹¤";
+
+        return chestLock.IsUnlocked() || chestLock.CanUnlock() ? "ì—´ ìˆ˜ ìˆìŠµë‹ˆë‹¤" : chestLock.requiredKey.name + "ê°€ í•„ìš”í•©ë‹ˆë‹¤";    }
 
     public void OnInteract()
     {
-        // ÀÌ¹Ì ¿­·ÈÀ¸¸é ¾Æ¹«°Íµµ ÇÏÁö ¾ÊÀ½
         if (isOpen) return;
 
-        // ÀÚ¹°¼è°¡ ÀÖ´Â °æ¿ì ÀÚ¹°¼è°¡ ¿­·Á ÀÖ¾î¾ß ÇÔ
         if (chestLock != null && !chestLock.TryUnlock()) return;
 
-        // ¿­±â ¾Ö´Ï¸ŞÀÌ¼Ç ½ÃÀÛ
         if (openCoroutine != null)
             StopCoroutine(openCoroutine);
 
@@ -58,7 +53,9 @@ public class ChestInteractable : PuzzleControllerBase, IInteractable
         }
 
         lidTransform.localRotation = targetRotation;
-        isOpen = true; // »óÀÚ¸¦ ¿­¾úÀ½
+
+
+        isOpen = true; 
     }
 
     protected override void ActivatePuzzle()

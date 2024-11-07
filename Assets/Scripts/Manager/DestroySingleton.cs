@@ -20,6 +20,7 @@ public class DestroySingleton<T> : MonoBehaviour where T : MonoBehaviour
                     _instance = singletonObject.AddComponent<T>();
                 }
             }
+
             return _instance;
         }
     }

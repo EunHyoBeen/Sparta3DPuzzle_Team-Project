@@ -7,50 +7,65 @@ using UnityEngine.SceneManagement;
 
 
 
-public class MapDataManager : Singleton<MapDataManager>
-{
-    public GameObject saveMap;
-    private readonly List<MapElement> mapData = new List<MapElement>();
+public class MapDataManager : DestroySingleton<MapDataManager>
+{ 
+    private GameObject mapContainer;
+    private  List<MapElement> mapData = new List<MapElement>();
     private string filePath;
 
-    protected override void Awake()
+    
+
+    private void Start()
     {
-        base.Awake();
+        mapContainer = MapEditor.Instance.mapContainer != null ? MapEditor.Instance.mapContainer :new GameObject("MapContainer");
     }
 
 
-    [ContextMenu("맵데이터 저장")]
-    public void SaveMapData()
+     public void SaveMapData(string mapName)
     {
-        string mapName = "";
-        if (mapName == "")
-            mapName = SceneManager.GetActiveScene().name;
-
-        //TODO 빌드 전에 persistentDataPath로 변경
-        filePath = Application.dataPath  + $"/MapData/MapData_{mapName}.json";
+        if(mapContainer == null)
+            return;
+ 
+        filePath = Application.dataPath  +  $"/MapData/{mapName}.json";
         
         mapData.Clear();
-        for (int i = 0; i < saveMap.transform.childCount; i++)
+        for (int i = 0; i <mapContainer.transform.childCount; i++)
         {
-            var child = saveMap.transform.GetChild(i);
-            MapElement newMapData = new MapElement(
-                child.name,
-                child.position,
-                child.rotation,
-                child.localScale
-            );
-            mapData.Add(newMapData);
+            var child = mapContainer.transform.GetChild(i);
+
+            if (child.TryGetComponent<PuzzleControllerBase>(out PuzzleControllerBase type))
+            {
+                MapElement newMapData = new MapElement(
+                    child.name,
+                    child.position,
+                    child.rotation,
+                    child.localScale,
+                    type.CurrentPuzzleType
+                 );
+                mapData.Add(newMapData);
+            }
+
+            else
+            {
+                MapElement newMapData = new MapElement(
+                    child.name,
+                    child.position,
+                    child.rotation,
+                    child.localScale
+                );
+                mapData.Add(newMapData);
+            }
+      
         }
 
-        string jsonData = JsonUtility.ToJson(new SerializableMapData(mapData), true);
+        string jsonData = JsonUtility.ToJson(new MapElementContainer(mapData), true);
         File.WriteAllText(filePath, jsonData);
         Debug.Log($"맵 데이터가 저장 됐습니다: '{mapName}' 경로: {filePath}");
     }
 
-    
-    public List<MapElement> LoadMapData(string filename)
+     public List<MapElement> LoadMapData(string mapDataName)
     {
-        filePath = Path.Combine(Application.dataPath, $"MapData/{filename}.json");
+        filePath = Path.Combine(Application.dataPath, $"MapData/{mapDataName}.json");
         
         if (!File.Exists(filePath))
         {
@@ -59,17 +74,24 @@ public class MapDataManager : Singleton<MapDataManager>
         }
         string jsonData = File.ReadAllText(filePath);
 
-        SerializableMapData loadedData = JsonUtility.FromJson<SerializableMapData>(jsonData);
+        MapElementContainer loadedElementContainer = JsonUtility.FromJson<MapElementContainer>(jsonData);
         Debug.Log($"로딩된 데이터: {filePath}");
-        return loadedData != null ? loadedData.elements : new List<MapElement>();
+        return loadedElementContainer != null ? loadedElementContainer.elements : new List<MapElement>();
+    }
+
+      public void CreateMap(string mapDataName)
+    {
+        MapEditor.Instance.generator.GenerateByMapData(LoadMapData(mapDataName));
     }
 }
+
+
 [System.Serializable]
-public class SerializableMapData
+public class MapElementContainer
 {
     public List<MapElement> elements;
 
-    public SerializableMapData(List<MapElement> elements)
+    public MapElementContainer(List<MapElement> elements)
     {
         this.elements = elements;
     }
