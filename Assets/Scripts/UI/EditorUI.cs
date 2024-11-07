@@ -21,6 +21,7 @@ public class EditorUI : MonoBehaviour
     [SerializeField] private Button playerPosButton;
     [SerializeField] private Button endPointButton;
     [SerializeField] private Button undoButton;
+    [SerializeField] private Button quitButton;
 
     private List<GameObject> activeElementResourceButtons = new List<GameObject>();
     private MapType mapType;
@@ -48,6 +49,7 @@ public class EditorUI : MonoBehaviour
         playerPosButton.onClick.AddListener(SetPlayerSpawnPosElement);
         endPointButton.onClick.AddListener(SetEndPointElement);
         undoButton.onClick.AddListener(Undo);
+        quitButton.onClick.AddListener(Quit);
     }
 
 
@@ -70,6 +72,11 @@ public class EditorUI : MonoBehaviour
     public void Undo()
     {
         MapEditor.Instance.builder.UndoBuild();
+    }
+
+    public void Quit()
+    {
+        FadeManager.Instance.LoadScene("StartScene");
     }
 
     public void SetElementButtonByType(int type)

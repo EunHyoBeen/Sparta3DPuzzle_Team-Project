@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7588533675573672280}
   - component: {fileID: 2442999446374716103}
-  - component: {fileID: 2118053141799177809}
+  - component: {fileID: 6945751957234741233}
   m_Layer: 16
   m_Name: CustomGameEndPoint
   m_TagString: Untagged
@@ -55,7 +55,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.5173454, y: 1.9838107, z: 1}
   m_Center: {x: -0.13986969, y: 0.9551817, z: 0}
---- !u!114 &2118053141799177809
+--- !u!114 &6945751957234741233
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -64,9 +64,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7348397674295449822}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 102af6de6aad429782ad2253187cbc36, type: 3}
+  m_Script: {fileID: 11500000, guid: 92173cf15ea34a6f8baceecca965ac8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stageName: PlayCustomGameScene
 --- !u!1001 &5995217287706572691
 PrefabInstance:
   m_ObjectHideFlags: 0
