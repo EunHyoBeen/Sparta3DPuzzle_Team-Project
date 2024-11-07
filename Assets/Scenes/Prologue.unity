@@ -173,8 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbb305ecb91787349bc68109ae8a9c42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fullText: "\uC2A4\uD1A0\uB9AC \uC2DC\uC791 \uD14C\uC2A4\uD2B8"
-  typingTime: 0.05
+  typingTime: 0.3
   sceneName: Stage1
 --- !u!114 &150601742
 MonoBehaviour:

@@ -440,8 +440,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbb305ecb91787349bc68109ae8a9c42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fullText: "\uC774 \uC2A4\uD1A0\uB9AC\uB294 \uC544\uBB34 \uAD00\uB828 \uC5C6\uC2B5\uB2C8\uB2E4"
-  typingTime: 0.05
+  fullText: "\uCD95\uD558\uD569\uB2C8\uB2E4! \uAFC8\uC5D0\uC11C \uD0C8\uCD9C\uD558\uC168\uC2B5\uB2C8\uB2E4!\n\uD558\uC9C0\uB9CC
+    \uC774\uAC8C \uB05D\uC774\uB77C\uACE0 \uC0DD\uAC01\uD558\uC9C0 \uB9C8\uC2ED\uC2DC\uC624..."
+  typingTime: 0.2
   sceneName: StartScene
 --- !u!1 &1629213891
 GameObject:

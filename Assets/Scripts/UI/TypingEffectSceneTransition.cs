@@ -7,7 +7,7 @@ using UnityEngine;
 public class TypingEffectSceneTransition : MonoBehaviour
 {
     private TextMeshProUGUI textComponent;
-    [SerializeField] private string fullText = "This is the text that will appear with a typing effect."; 
+    [SerializeField] private string fullText = "당신은 꿈 속에 갇혔습니다.\n여기서 빠져나가야 합니다..."; 
     [SerializeField] private float typingTime = 0.05f;
     [SerializeField] private string sceneName;
     

@@ -39,6 +39,8 @@ public class ChestPuzzleElement : MonoBehaviour, IPuzzleElement
             return;
         }
 
+        //2번을 붙일 때 , 2번 발행하는 ,  
+        
         else
         {
             Debug.Log("올바른 번호를 입력해주세요.");

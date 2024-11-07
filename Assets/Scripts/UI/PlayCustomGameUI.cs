@@ -30,19 +30,16 @@ public class PlayCustomGameUI : MonoBehaviour
     {
         string mapDataDirectoryPath = Application.dataPath + "/MapData";
 
-        // 폴더가 없을 경우 생성
         if (!Directory.Exists(mapDataDirectoryPath))
         {
             Directory.CreateDirectory(mapDataDirectoryPath);
         }
 
-        // 폴더에서 파일 이름 가져오기
-        string[] files = Directory.GetFiles(mapDataDirectoryPath, "*.json"); // JSON 파일만 가져오기
-        Debug.Log($"파일 개수: {files.Length}");
+        string[] files = Directory.GetFiles(mapDataDirectoryPath, "*.json"); 
 
         foreach (var filePath in files)
         {
-            string mapDataName = Path.GetFileNameWithoutExtension(filePath); // 파일 이름만 추출
+            string mapDataName = Path.GetFileNameWithoutExtension(filePath); 
             Debug.Log(mapDataName);
 
             GameObject mapDataLoadButton = ObjectPool.Instance.GetObject();
