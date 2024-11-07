@@ -11,11 +11,15 @@ public class MapEditInputController : MonoBehaviour
     public event Action<Vector2> OnRotationEvent;
     public event Action<Vector2> OnScrollEvent;
     public event Action OnRightButtonEvent;
+    public event Action OnRotateQButtonEvent;
+    public event Action OnRotateEButtonEvent;
 
     private bool isScrollButtonOn = false;
     private bool isRightButtonOn = false;
 
+    
 
+    
     public void OnDirectionalInput(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Performed && isRightButtonOn)
@@ -93,5 +97,20 @@ public class MapEditInputController : MonoBehaviour
                 OnScrollEvent?.Invoke(new Vector2(0, -1));
         }
     }
-    
+
+
+    public void OnRotateQButton(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+        {
+            OnRotateQButtonEvent?.Invoke();
+        }
+    }
+    public void OnRotateEButton(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+        {
+            OnRotateEButtonEvent?.Invoke();
+        }
+    }
 }

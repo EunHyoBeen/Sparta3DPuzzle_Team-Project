@@ -5,8 +5,8 @@ using System.Collections;
 
 public class FadeManager : Singleton<FadeManager>
 {
-    public Image fadeImage;  // Canvas ¾È¿¡ Image ÇÒ´ç
-    public float fadeDuration = 1.0f; // ÆäÀÌµå È¿°ú Áö¼Ó ½Ã°£
+    public Image fadeImage;  // Canvas ì•ˆì— Image í• ë‹¹
+    public float fadeDuration = 1.0f; // í˜ì´ë“œ íš¨ê³¼ ì§€ì† ì‹œê°„
 
     protected override void Awake()
     {
@@ -15,10 +15,10 @@ public class FadeManager : Singleton<FadeManager>
 
     private void Start()
     {
-        StartCoroutine(FadeIn());  // ½ÃÀÛ ½Ã ÆäÀÌµå ÀÎ
+        StartCoroutine(FadeIn());  // ì‹œì‘ ì‹œ í˜ì´ë“œ ì¸
     }
 
-    // ÆäÀÌµå ÀÎ È¿°ú
+    // í˜ì´ë“œ ì¸ íš¨ê³¼
     public IEnumerator FadeIn()
     {
         fadeImage.gameObject.SetActive(true);
@@ -38,7 +38,7 @@ public class FadeManager : Singleton<FadeManager>
         fadeImage.gameObject.SetActive(false);
     }
 
-    // ÆäÀÌµå ¾Æ¿ô È¿°ú ¹× ¾À ÀüÈ¯
+    // í˜ì´ë“œ ì•„ì›ƒ íš¨ê³¼ ë° ì”¬ ì „í™˜
     public IEnumerator FadeOut(string sceneName)
     {
         fadeImage.gameObject.SetActive(true);
@@ -56,12 +56,12 @@ public class FadeManager : Singleton<FadeManager>
         color.a = 1;
         fadeImage.color = color;
 
-        // ¾À ÀüÈ¯ ÈÄ ÆäÀÌµå ÀÎ ½ÃÀÛ
+        // ì”¬ ì „í™˜ í›„ í˜ì´ë“œ ì¸ ì‹œì‘
         SceneManager.LoadScene(sceneName);
         yield return FadeIn();
     }
 
-    // ¾À ÀüÈ¯À» È£ÃâÇÏ´Â ÇÔ¼ö
+    // ì”¬ ì „í™˜ì„ í˜¸ì¶œí•˜ëŠ” í•¨ìˆ˜
     public void LoadScene(string sceneName)
     {
         StartCoroutine(FadeOut(sceneName));
