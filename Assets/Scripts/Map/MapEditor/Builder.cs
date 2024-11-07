@@ -6,17 +6,16 @@ using UnityEngine;
 
 public class Builder : MonoBehaviour
 {
-    
-    [SerializeField]float snapDistance = 0.1f; 
-    [SerializeField]float snapSpeed = 30f;
+    [SerializeField] float snapDistance = 0.1f;
+    [SerializeField] float snapSpeed = 30f;
     [SerializeField] private float elementRotateAmount = 5f;
     private BuildableElement curElement;
     private MapEditInputController controller;
-    private MapGenerator  generator;
-    
+    private MapGenerator generator;
+
     private string curElementResourcePath;
 
-    private string curElementData; 
+    private string curElementData;
     private Vector3 curSnapPos;
     private bool canBuild;
     private bool isSnapped = false;
@@ -24,9 +23,8 @@ public class Builder : MonoBehaviour
     private Stack<GameObject> elementHistory = new Stack<GameObject>();
     private GameObject curPlayerPos;
     private GameObject curEndPoint;
-    
-    
-    
+
+
     private void Awake()
     {
         controller = GetComponent<MapEditInputController>();
@@ -43,13 +41,15 @@ public class Builder : MonoBehaviour
     private void RotateLeftOnYAxis()
     {
         if (curElement != null)
-            curElement.transform.localRotation = Quaternion.Euler(0, curElement.transform.localRotation.eulerAngles.y - elementRotateAmount, 0);
+            curElement.transform.localRotation = Quaternion.Euler(0,
+                curElement.transform.localRotation.eulerAngles.y - elementRotateAmount, 0);
     }
 
     private void RotateRightOnYAxis()
     {
         if (curElement != null)
-            curElement.transform.localRotation = Quaternion.Euler(0, curElement.transform.localRotation.eulerAngles.y + elementRotateAmount, 0);
+            curElement.transform.localRotation = Quaternion.Euler(0,
+                curElement.transform.localRotation.eulerAngles.y + elementRotateAmount, 0);
     }
 
     public void CreateBuildElement(string path)
@@ -60,7 +60,7 @@ public class Builder : MonoBehaviour
         obj.AddComponent<Rigidbody>().isKinematic = true;
         obj.GetComponentInChildren<Collider>().isTrigger = true;
         curElement = obj.AddComponent<BuildableElement>();
- 
+
         SetElementByLayer(obj);
 
 
@@ -69,25 +69,25 @@ public class Builder : MonoBehaviour
         StartCoroutine(MoveCurElement());
     }
 
-    
+
     private void SetElementByLayer(GameObject obj)
     {
         if (obj.layer == LayerMask.NameToLayer("Terrain"))
             curElement.SetTerrain();
-        
-        if(obj.layer == LayerMask.NameToLayer("EndPoint"))
+
+        if (obj.layer == LayerMask.NameToLayer("EndPoint"))
             curElement.SetEndPoint();
-        
-        if(obj.layer == LayerMask.NameToLayer("PlayerPos"))
+
+        if (obj.layer == LayerMask.NameToLayer("PlayerPos"))
             curElement.SetPlayerPos();
     }
 
-    
+
     public void DeleteBuildElement()
     {
-        if(curElement !=null)
+        if (curElement != null)
             Destroy(curElement.gameObject);
-        
+
         curElement = null;
     }
 
@@ -95,25 +95,27 @@ public class Builder : MonoBehaviour
     {
         GameObject obj = Instantiate(
             Resources.Load<GameObject>(curElementResourcePath),
-            DetectNearElement(),  
-            curElement.transform.localRotation, 
-            MapEditor.Instance.mapContainer.transform  
+            DetectNearElement(),
+            curElement.transform.localRotation,
+            MapEditor.Instance.mapContainer.transform
         );
 
         AssignPlayerPosElement(obj);
         AssignEndPointElement(obj);
+
+        // 인터페이스는 특정 행동을 어떻게 수행 하지를 구분을 해주는 용도 , 
+        if (obj.TryGetComponent<IPuzzleElement>(out IPuzzleElement puzzleElement))
+        {
+            puzzleElement.InitializePuzzleElement();
+        }
+
         
-       
-         if(obj.TryGetComponent<IPuzzleElement>(out IPuzzleElement puzzleElement))
-         {
-             puzzleElement.InitializePuzzleElement();
-         }
         elementHistory.Push(obj);
     }
 
     private void AssignPlayerPosElement(GameObject obj)
     {
-        if(!curElement.isPlayerPos)
+        if (!curElement.isPlayerPos)
             return;
 
         if (curPlayerPos == null)
@@ -122,16 +124,14 @@ public class Builder : MonoBehaviour
             return;
         }
 
-        
+
         Destroy(curPlayerPos);
         curPlayerPos = obj;
-
     }
 
     private void AssignEndPointElement(GameObject obj)
     {
-        
-        if(!curElement.isEndPoint)
+        if (!curElement.isEndPoint)
             return;
 
         if (curEndPoint == null)
@@ -139,40 +139,39 @@ public class Builder : MonoBehaviour
             curEndPoint = obj;
             return;
         }
-        
+
         Destroy(curEndPoint);
         curEndPoint = obj;
     }
 
     public void UndoBuild()
     {
-        if(elementHistory.Count > 0)
-            Destroy( elementHistory.Pop());
+        if (elementHistory.Count > 0)
+            Destroy(elementHistory.Pop());
     }
 
     private IEnumerator MoveCurElement()
     {
         while (curElement != null)
-        {   
-            
+        {
             Vector3 targetPosition = DetectNearElement();
 
-             float distance = Vector3.Distance(curElement.transform.position, targetPosition);
+            float distance = Vector3.Distance(curElement.transform.position, targetPosition);
 
             if (distance < snapDistance && isSnapped)
             {
-                 curElement.transform.position = Vector3.MoveTowards(curElement.transform.position,
-                     targetPosition, snapSpeed * Time.deltaTime);
+                curElement.transform.position = Vector3.MoveTowards(curElement.transform.position,
+                    targetPosition, snapSpeed * Time.deltaTime);
             }
             else
             {
-                 curElement.transform.position = targetPosition;
+                curElement.transform.position = targetPosition;
             }
 
             yield return new WaitForFixedUpdate();
         }
     }
-    
+
     private Vector3 DetectNearElement()
     {
         RaycastHit hit;
@@ -194,20 +193,19 @@ public class Builder : MonoBehaviour
         isSnapped = false;
         return ray.origin + ray.direction * 3f;
     }
-    
 
-    private Vector3 CalculateTerrainPosition(RaycastHit hit) 
+
+    private Vector3 CalculateTerrainPosition(RaycastHit hit)
     {
-         Vector3 gameObjectBottomCenter = hit.transform.position;
-         float colliderHeight = hit.collider.bounds.size.y;
-         Vector3 topPosition = gameObjectBottomCenter + colliderHeight * Vector3.up ;
-         
+        Vector3 gameObjectBottomCenter = hit.transform.position;
+        float colliderHeight = hit.collider.bounds.size.y;
+        Vector3 topPosition = gameObjectBottomCenter + colliderHeight * Vector3.up;
+
         return topPosition;
     }
 
     private void TryBuildElement()
     {
-        
         if (curElement == null || !curElement.CanBuild)
             return;
 
