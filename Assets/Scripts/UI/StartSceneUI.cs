@@ -55,8 +55,8 @@ public class StartSceneUI : MonoBehaviour
 
     public void OnReStartButton()
     {
-        DataManager.Instance.SetTopScene("Stage1");
-        FadeManager.Instance.LoadScene("Stage1");
+        DataManager.Instance.SetTopScene("Prologue");
+        FadeManager.Instance.LoadScene("Prologue");
     }
 
     public void OnEditMapButton()
